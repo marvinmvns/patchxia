@@ -1,7 +1,7 @@
 import json
 import os
 
-GLOSSARY_PATH = "translation_patch/glossary.json"
+GLOSSARY_PATH = "glossary.json"
 
 # Common translations map
 MAPPINGS = {
