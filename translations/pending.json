@@ -1,13 +1,397 @@
 {
-  "version": "1.0.0",
-  "last_updated": "2026-02-02T00:00:00",
-  "description": "Strings pendentes de tradução - edite este arquivo para adicionar traduções manuais",
-  "instructions": {
-    "como_usar": "1. Encontre a string que deseja traduzir pelo hash",
-    "passo_2": "2. Adicione a tradução em 'suggested_translation'",
-    "passo_3": "3. Execute o script com --use-llm para processar",
-    "nota": "Strings traduzidas serão movidas automaticamente para translations.json"
-  },
-  "total_pending": 0,
-  "pending": {}
+  "version": "2.0.0",
+  "last_updated": "2026-02-02T19:51:00.477627",
+  "total_pending": 39,
+  "pending": {
+    "00f9048f9583": {
+      "original": "服务器配置文件",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 1,
+      "context": "# 服务器配置文件",
+      "hash": "00f9048f9583",
+      "date_found": "2026-02-02T19:51:00.470115",
+      "suggested_translation": ""
+    },
+    "b8ce95a651ee": {
+      "original": "小智服务器",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 3,
+      "context": "name: \"小智服务器\"  # 服务器名称",
+      "hash": "b8ce95a651ee",
+      "date_found": "2026-02-02T19:51:00.470138",
+      "suggested_translation": ""
+    },
+    "c4ba24285d62": {
+      "original": "服务器名称",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 3,
+      "context": "name: \"小智服务器\"  # 服务器名称",
+      "hash": "c4ba24285d62",
+      "date_found": "2026-02-02T19:51:00.470146",
+      "suggested_translation": ""
+    },
+    "7ff555812dbb": {
+      "original": "语音识别配置",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 7,
+      "context": "# 语音识别配置",
+      "hash": "7ff555812dbb",
+      "date_found": "2026-02-02T19:51:00.470154",
+      "suggested_translation": ""
+    },
+    "a4ecb92d1845": {
+      "original": "语音识别引擎配置",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 11,
+      "context": "description: \"语音识别引擎配置\"",
+      "hash": "a4ecb92d1845",
+      "date_found": "2026-02-02T19:51:00.470161",
+      "suggested_translation": ""
+    },
+    "e9217961ccac": {
+      "original": "语音合成配置",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 13,
+      "context": "# 语音合成配置",
+      "hash": "e9217961ccac",
+      "date_found": "2026-02-02T19:51:00.470167",
+      "suggested_translation": ""
+    },
+    "07631a45950b": {
+      "original": "语音合成引擎配置",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 17,
+      "context": "description: \"语音合成引擎配置\"",
+      "hash": "07631a45950b",
+      "date_found": "2026-02-02T19:51:00.470175",
+      "suggested_translation": ""
+    },
+    "03d8a25f66c3": {
+      "original": "大语言模型配置",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 19,
+      "context": "# 大语言模型配置",
+      "hash": "03d8a25f66c3",
+      "date_found": "2026-02-02T19:51:00.470186",
+      "suggested_translation": ""
+    },
+    "673518694181": {
+      "original": "日志配置",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 25,
+      "context": "# 日志配置",
+      "hash": "673518694181",
+      "date_found": "2026-02-02T19:51:00.470194",
+      "suggested_translation": ""
+    },
+    "6d56e9589652": {
+      "original": "小智ESP32服务器",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/settings.json",
+      "line_number": 2,
+      "context": "\"app_name\": \"小智ESP32服务器\",",
+      "hash": "6d56e9589652",
+      "date_found": "2026-02-02T19:51:00.471007",
+      "suggested_translation": ""
+    },
+    "72f7cde1f9ba": {
+      "original": "智能语音助手",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/settings.json",
+      "line_number": 6,
+      "context": "\"title\": \"智能语音助手\",",
+      "hash": "72f7cde1f9ba",
+      "date_found": "2026-02-02T19:51:00.471024",
+      "suggested_translation": ""
+    },
+    "8953e5893592": {
+      "original": "欢迎使用小智语音助手",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/settings.json",
+      "line_number": 7,
+      "context": "\"welcome_message\": \"欢迎使用小智语音助手\",",
+      "hash": "8953e5893592",
+      "date_found": "2026-02-02T19:51:00.471030",
+      "suggested_translation": ""
+    },
+    "e1bcce67d9b7": {
+      "original": "小智小智",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/settings.json",
+      "line_number": 32,
+      "context": "\"wake_word\": \"小智小智\",",
+      "hash": "e1bcce67d9b7",
+      "date_found": "2026-02-02T19:51:00.471078",
+      "suggested_translation": ""
+    },
+    "24e2ffafa643": {
+      "original": "语音合成引擎",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/settings.json",
+      "line_number": 33,
+      "context": "\"tts_engine\": \"语音合成引擎\",",
+      "hash": "24e2ffafa643",
+      "date_found": "2026-02-02T19:51:00.471084",
+      "suggested_translation": ""
+    },
+    "62bdc81bc9e4": {
+      "original": "语音识别引擎",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/config/settings.json",
+      "line_number": 34,
+      "context": "\"asr_engine\": \"语音识别引擎\"",
+      "hash": "62bdc81bc9e4",
+      "date_found": "2026-02-02T19:51:00.471093",
+      "suggested_translation": ""
+    },
+    "60be255687f4": {
+      "original": "Docker 安装脚本",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/docker-setup.sh",
+      "line_number": 2,
+      "context": "# Docker 安装脚本",
+      "hash": "60be255687f4",
+      "date_found": "2026-02-02T19:51:00.472192",
+      "suggested_translation": ""
+    },
+    "40d5079bc6c6": {
+      "original": "自动配置和启动服务器",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/docker-setup.sh",
+      "line_number": 3,
+      "context": "# 自动配置和启动服务器",
+      "hash": "40d5079bc6c6",
+      "date_found": "2026-02-02T19:51:00.472209",
+      "suggested_translation": ""
+    },
+    "cd52401c727c": {
+      "original": "开始安装...",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/docker-setup.sh",
+      "line_number": 5,
+      "context": "echo \"开始安装...\"",
+      "hash": "cd52401c727c",
+      "date_found": "2026-02-02T19:51:00.472213",
+      "suggested_translation": ""
+    },
+    "848e25002ab3": {
+      "original": "正在处理依赖...",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/docker-setup.sh",
+      "line_number": 6,
+      "context": "echo \"正在处理依赖...\"",
+      "hash": "848e25002ab3",
+      "date_found": "2026-02-02T19:51:00.472217",
+      "suggested_translation": ""
+    },
+    "176e15d2fcc4": {
+      "original": "安装完成！",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/docker-setup.sh",
+      "line_number": 7,
+      "context": "echo \"安装完成！\"",
+      "hash": "176e15d2fcc4",
+      "date_found": "2026-02-02T19:51:00.472221",
+      "suggested_translation": ""
+    },
+    "411867410bfc": {
+      "original": "启动服务器...",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/docker-setup.sh",
+      "line_number": 8,
+      "context": "echo \"启动服务器...\"",
+      "hash": "411867410bfc",
+      "date_found": "2026-02-02T19:51:00.472224",
+      "suggested_translation": ""
+    },
+    "3886dbc8268a": {
+      "original": "智能家居控制面板",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/dashboard.vue",
+      "line_number": 3,
+      "context": "<h1>智能家居控制面板</h1>",
+      "hash": "3886dbc8268a",
+      "date_found": "2026-02-02T19:51:00.473104",
+      "suggested_translation": ""
+    },
+    "99bd4d26f32d": {
+      "original": "状态: {{ status }}",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/dashboard.vue",
+      "line_number": 6,
+      "context": "<span>状态: {{ status }}</span>",
+      "hash": "99bd4d26f32d",
+      "date_found": "2026-02-02T19:51:00.473122",
+      "suggested_translation": ""
+    },
+    "b4698409130a": {
+      "original": "设备列表",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/dashboard.vue",
+      "line_number": 17,
+      "context": "<h2>设备列表</h2>",
+      "hash": "b4698409130a",
+      "date_found": "2026-02-02T19:51:00.473143",
+      "suggested_translation": ""
+    },
+    "7bc20e5dc8ec": {
+      "original": "{{ device.online ? '在线' : '离线' }}",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/dashboard.vue",
+      "line_number": 21,
+      "context": "<span>{{ device.online ? '在线' : '离线' }}</span>",
+      "hash": "7bc20e5dc8ec",
+      "date_found": "2026-02-02T19:51:00.473153",
+      "suggested_translation": ""
+    },
+    "baed4ea55518": {
+      "original": "音频控制",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/dashboard.vue",
+      "line_number": 26,
+      "context": "<h2>音频控制</h2>",
+      "hash": "baed4ea55518",
+      "date_found": "2026-02-02T19:51:00.473164",
+      "suggested_translation": ""
+    },
+    "955f46cc2e34": {
+      "original": "音量: {{ volume }}%",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/dashboard.vue",
+      "line_number": 31,
+      "context": "<span>音量: {{ volume }}%</span>",
+      "hash": "955f46cc2e34",
+      "date_found": "2026-02-02T19:51:00.473178",
+      "suggested_translation": ""
+    },
+    "96d5554b6656": {
+      "original": "加载中提示",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/dashboard.vue",
+      "line_number": 34,
+      "context": "<!-- 加载中提示 -->",
+      "hash": "96d5554b6656",
+      "date_found": "2026-02-02T19:51:00.473184",
+      "suggested_translation": ""
+    },
+    "634238de7aac": {
+      "original": "打开设置",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/dashboard.vue",
+      "line_number": 66,
+      "context": "console.log('打开设置')",
+      "hash": "634238de7aac",
+      "date_found": "2026-02-02T19:51:00.473190",
+      "suggested_translation": ""
+    },
+    "37c1eb9b23f4": {
+      "original": "配置文件路径",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 10,
+      "context": "# 配置文件路径",
+      "hash": "37c1eb9b23f4",
+      "date_found": "2026-02-02T19:51:00.474481",
+      "suggested_translation": ""
+    },
+    "680696f9f6a0": {
+      "original": "语音识别服务器",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 14,
+      "context": "\"\"\"语音识别服务器\"\"\"",
+      "hash": "680696f9f6a0",
+      "date_found": "2026-02-02T19:51:00.474494",
+      "suggested_translation": ""
+    },
+    "411ab4ebb1b1": {
+      "original": "服务器启动中...",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 19,
+      "context": "logging.info(\"服务器启动中...\")",
+      "hash": "411ab4ebb1b1",
+      "date_found": "2026-02-02T19:51:00.474504",
+      "suggested_translation": ""
+    },
+    "a1fe2a4a846a": {
+      "original": "连接成功后的处理",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 22,
+      "context": "\"\"\"连接成功后的处理\"\"\"",
+      "hash": "a1fe2a4a846a",
+      "date_found": "2026-02-02T19:51:00.474508",
+      "suggested_translation": ""
+    },
+    "3fe7b5b0b390": {
+      "original": "断开连接",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 27,
+      "context": "\"\"\"断开连接\"\"\"",
+      "hash": "3fe7b5b0b390",
+      "date_found": "2026-02-02T19:51:00.474517",
+      "suggested_translation": ""
+    },
+    "4cb504a62a26": {
+      "original": "正在处理音频",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 39,
+      "context": "# 正在处理音频",
+      "hash": "4cb504a62a26",
+      "date_found": "2026-02-02T19:51:00.474527",
+      "suggested_translation": ""
+    },
+    "d0f9480fb555": {
+      "original": "智能对话处理",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 44,
+      "context": "\"\"\"智能对话处理\"\"\"",
+      "hash": "d0f9480fb555",
+      "date_found": "2026-02-02T19:51:00.474536",
+      "suggested_translation": ""
+    },
+    "782433a09999": {
+      "original": "大语言模型响应",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 45,
+      "context": "return \"大语言模型响应\"",
+      "hash": "782433a09999",
+      "date_found": "2026-02-02T19:51:00.474540",
+      "suggested_translation": ""
+    },
+    "5e7b1833b6d7": {
+      "original": "开始服务器",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 50,
+      "context": "print(\"开始服务器\")",
+      "hash": "5e7b1833b6d7",
+      "date_found": "2026-02-02T19:51:00.474544",
+      "suggested_translation": ""
+    },
+    "5726ab4307e8": {
+      "original": "停止服务器",
+      "source_lang": "zh",
+      "file_path": "/home/user/patchxia/tests/test_project/main/server.py",
+      "line_number": 52,
+      "context": "print(\"停止服务器\")",
+      "hash": "5726ab4307e8",
+      "date_found": "2026-02-02T19:51:00.474550",
+      "suggested_translation": ""
+    }
+  }
 }

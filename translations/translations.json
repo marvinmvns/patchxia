@@ -1,1073 +1,1072 @@
 {
-  "version": "1.0.0",
-  "last_updated": "2026-02-02T00:00:00",
-  "description": "Banco de traduções Chinês/Inglês -> Português do Brasil para xiaozhi-esp32-server",
-  "total_translations": 150,
+  "version": "2.0.0",
+  "last_updated": "2026-02-02T19:51:00.475552",
+  "total_translations": 97,
   "translations": {
-    "a1b2c3d4e5f6": {
+    "7c306e883270": {
       "original": "语音识别",
       "translated": "Reconhecimento de voz",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "ASR - Automatic Speech Recognition",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "b2c3d4e5f6a1": {
+    "d9c9cfab3127": {
       "original": "语音合成",
       "translated": "Síntese de voz",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "TTS - Text to Speech",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "c3d4e5f6a1b2": {
+    "faf3ef15d22b": {
       "original": "大语言模型",
       "translated": "Modelo de Linguagem Grande (LLM)",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "LLM - Large Language Model",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "d4e5f6a1b2c3": {
+    "67c53ebfde5a": {
       "original": "智能对话",
       "translated": "Conversa inteligente",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Intelligent conversation/chat",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "e5f6a1b2c3d4": {
+    "15c64aa0b404": {
       "original": "配置文件",
       "translated": "Arquivo de configuração",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Configuration file",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "f6a1b2c3d4e5": {
+    "c566ca59602c": {
       "original": "服务器",
       "translated": "Servidor",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Server",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "1a2b3c4d5e6f": {
+    "efc6882b4eb7": {
       "original": "客户端",
       "translated": "Cliente",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Client",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "2b3c4d5e6f1a": {
+    "b33199d32d63": {
       "original": "连接成功",
       "translated": "Conexão bem-sucedida",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Connection successful",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "3c4d5e6f1a2b": {
+    "0745fc09bb98": {
       "original": "连接失败",
       "translated": "Falha na conexão",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Connection failed",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "4d5e6f1a2b3c": {
+    "f55f17362872": {
       "original": "设备",
       "translated": "Dispositivo",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Device",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "5e6f1a2b3c4d": {
+    "a3e3b88377c8": {
       "original": "开始",
       "translated": "Iniciar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Start/Begin",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "6f1a2b3c4d5e": {
+    "095e938e2a09": {
       "original": "停止",
       "translated": "Parar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Stop",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "7a8b9c0d1e2f": {
+    "7030ff64701a": {
       "original": "错误",
       "translated": "Erro",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Error",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "8b9c0d1e2f3a": {
+    "900c70fa5f7d": {
       "original": "警告",
       "translated": "Aviso",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Warning",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "9c0d1e2f3a4b": {
+    "330363dfc524": {
       "original": "成功",
       "translated": "Sucesso",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Success",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "0d1e2f3a4b5c": {
+    "acd5cb847a4a": {
       "original": "失败",
       "translated": "Falha",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Failure/Failed",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ab12cd34ef56": {
+    "1fd02a90c383": {
       "original": "用户",
       "translated": "Usuário",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "User",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "bc23de45fg67": {
+    "a8105204604a": {
       "original": "密码",
       "translated": "Senha",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Password",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "cd34ef56gh78": {
+    "402d19e50fff": {
       "original": "登录",
       "translated": "Login",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Login/Sign in",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "de45fg67hi89": {
+    "c3992269b4bc": {
       "original": "退出",
       "translated": "Sair",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Logout/Exit",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ef56gh78ij90": {
+    "e366ccf1556c": {
       "original": "设置",
       "translated": "Configurações",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Settings",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "fg67hi89jk01": {
+    "be5fbbe34ce9": {
       "original": "保存",
       "translated": "Salvar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Save",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "gh78ij90kl12": {
+    "625fb26b4b33": {
       "original": "取消",
       "translated": "Cancelar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Cancel",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "hi89jk01lm23": {
+    "38cf16f2204f": {
       "original": "确定",
       "translated": "Confirmar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Confirm/OK",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ij90kl12mn34": {
+    "2f4aaddde33c": {
       "original": "删除",
       "translated": "Excluir",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Delete",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "jk01lm23no45": {
+    "b58c7549c024": {
       "original": "添加",
       "translated": "Adicionar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Add",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "kl12mn34op56": {
+    "95b351c86267": {
       "original": "编辑",
       "translated": "Editar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Edit",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "lm23no45pq67": {
+    "607e7a4f377f": {
       "original": "查看",
       "translated": "Visualizar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "View",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "mn34op56qr78": {
+    "e5f71fc31e72": {
       "original": "搜索",
       "translated": "Pesquisar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Search",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "no45pq67rs89": {
+    "694fc5efa9e1": {
       "original": "刷新",
       "translated": "Atualizar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Refresh",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "op56qr78st90": {
+    "f013ea9dcba3": {
       "original": "加载中",
       "translated": "Carregando",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Loading",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "pq67rs89tu01": {
+    "7c1efe79cc1f": {
       "original": "请稍候",
       "translated": "Por favor, aguarde",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Please wait",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "qr78st90uv12": {
+    "2a0c4740f156": {
       "original": "文件",
       "translated": "Arquivo",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "File",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "rs89tu01vw23": {
+    "1f4c1042ed00": {
       "original": "文件夹",
       "translated": "Pasta",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Folder",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "st90uv12wx34": {
+    "d5a73b0c7f2f": {
       "original": "上传",
       "translated": "Upload",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Upload",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "tu01vw23xy45": {
+    "f26ef9142458": {
       "original": "下载",
       "translated": "Download",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Download",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "uv12wx34yz56": {
+    "726dd5df4319": {
       "original": "音频",
       "translated": "Áudio",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Audio",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "vw23xy45za67": {
+    "7fcf42edf581": {
       "original": "视频",
       "translated": "Vídeo",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Video",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "wx34yz56ab78": {
+    "20def7942674": {
       "original": "图片",
       "translated": "Imagem",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Image",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "xy45za67bc89": {
+    "ff692f04ace0": {
       "original": "消息",
       "translated": "Mensagem",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Message",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "yz56ab78cd90": {
+    "1535fcfa4cb8": {
       "original": "发送",
       "translated": "Enviar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Send",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "za67bc89de01": {
+    "15e9238b799e": {
       "original": "接收",
       "translated": "Receber",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Receive",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ab78cd90ef12": {
+    "3fea7ca76cde": {
       "original": "状态",
       "translated": "Status",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Status/State",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "bc89de01fg23": {
+    "68905cf391b2": {
       "original": "在线",
       "translated": "Online",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Online",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "cd90ef12gh34": {
+    "50d4a8502e0b": {
       "original": "离线",
       "translated": "Offline",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Offline",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "de01fg23hi45": {
+    "7ddbe15c845f": {
       "original": "网络",
       "translated": "Rede",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Network",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ef12gh34ij56": {
+    "c76cfefe7271": {
       "original": "端口",
       "translated": "Porta",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Port",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "fg23hi45jk67": {
+    "7650487a8758": {
       "original": "地址",
       "translated": "Endereço",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Address",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "gh34ij56kl78": {
+    "e944c7c9017a": {
       "original": "超时",
       "translated": "Tempo esgotado",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Timeout",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "hi45jk67lm89": {
+    "132c5cdcceb0": {
       "original": "重试",
       "translated": "Tentar novamente",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Retry",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ij56kl78mn90": {
+    "fe2df04a1680": {
       "original": "版本",
       "translated": "Versão",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Version",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "jk67lm89no01": {
+    "32ac152be191": {
       "original": "更新",
       "translated": "Atualização",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Update",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "kl78mn90op12": {
+    "e655a410ff21": {
       "original": "安装",
       "translated": "Instalar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Install",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "lm89no01pq23": {
+    "81824cff2443": {
       "original": "卸载",
       "translated": "Desinstalar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Uninstall",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "mn90op12qr34": {
+    "92e3a830ae9a": {
       "original": "帮助",
       "translated": "Ajuda",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Help",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "no01pq23rs45": {
+    "81d9f5054410": {
       "original": "关于",
       "translated": "Sobre",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "About",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "op12qr34st56": {
+    "db1c89e0f6e6": {
       "original": "首页",
       "translated": "Página inicial",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Home page",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "pq23rs45tu67": {
+    "5f411223ca5a": {
       "original": "返回",
       "translated": "Voltar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Back/Return",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "qr34st56uv78": {
+    "38ce27d84639": {
       "original": "下一步",
       "translated": "Próximo",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Next",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "rs45tu67vw89": {
+    "eeb6908870e0": {
       "original": "上一步",
       "translated": "Anterior",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Previous",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "st56uv78wx90": {
+    "769d88e425e0": {
       "original": "完成",
       "translated": "Concluído",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Complete/Done",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "tu67vw89xy01": {
+    "1fc54501b18c": {
       "original": "智能家居",
       "translated": "Casa inteligente",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Smart home",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "uv78wx90yz12": {
+    "3d13e1c086cc": {
       "original": "物联网",
       "translated": "Internet das Coisas (IoT)",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "IoT - Internet of Things",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "vw89xy01za23": {
+    "8dbd4eba2efd": {
       "original": "唤醒词",
       "translated": "Palavra de ativação",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Wake word",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "wx90yz12ab34": {
+    "e9f5e3b1d3d0": {
       "original": "麦克风",
       "translated": "Microfone",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Microphone",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "xy01za23bc45": {
+    "1c59faa2ea64": {
       "original": "扬声器",
       "translated": "Alto-falante",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Speaker",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "yz12ab34cd56": {
+    "09b095d8fc86": {
       "original": "音量",
       "translated": "Volume",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Volume",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "za23bc45de67": {
+    "351cb1f8ffbc": {
       "original": "静音",
       "translated": "Mudo",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Mute",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ab34cd56ef78": {
+    "b85270cd3c06": {
       "original": "播放",
       "translated": "Reproduzir",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Play",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "bc45de67fg89": {
+    "8d63ef388eb6": {
       "original": "暂停",
       "translated": "Pausar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Pause",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "cd56ef78gh90": {
+    "beacda022a81": {
       "original": "录音",
       "translated": "Gravação",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Recording",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "de67fg89hi01": {
+    "85936242fc9e": {
       "original": "对话",
       "translated": "Conversa",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Conversation/Dialog",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ef78gh90ij12": {
+    "c0abbfb414cf": {
       "original": "聊天",
       "translated": "Chat",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Chat",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "fg89hi01jk23": {
+    "1f0975918788": {
       "original": "机器人",
       "translated": "Robô",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Robot/Bot",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "gh90ij12kl34": {
+    "f068f0dad747": {
       "original": "人工智能",
       "translated": "Inteligência Artificial",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "AI - Artificial Intelligence",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "hi01jk23lm45": {
+    "8000f187a5d4": {
       "original": "模型",
       "translated": "Modelo",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Model",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ij12kl34mn56": {
+    "d8b16075c27a": {
       "original": "训练",
       "translated": "Treinamento",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Training",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "jk23lm45no67": {
+    "ed6f7ed808c4": {
       "original": "推理",
       "translated": "Inferência",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Inference",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "kl34mn56op78": {
+    "68051bf4aa27": {
       "original": "数据库",
       "translated": "Banco de dados",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Database",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "lm45no67pq89": {
+    "e80c310e6ae7": {
       "original": "缓存",
       "translated": "Cache",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Cache",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "mn56op78qr90": {
+    "456d29ef8baf": {
       "original": "日志",
       "translated": "Log",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Log",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "no67pq89rs01": {
+    "b7c0bfff1b6f": {
       "original": "调试",
       "translated": "Debug",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Debug",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "op78qr90st12": {
+    "db06c78d1e24": {
       "original": "测试",
       "translated": "Teste",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Test",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "pq89rs01tu23": {
+    "a9f94dcd57ee": {
       "original": "部署",
       "translated": "Deploy",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Deploy/Deployment",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "qr90st12uv34": {
+    "22c799040acd": {
       "original": "容器",
       "translated": "Container",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Container (Docker)",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "rs01tu23vw45": {
+    "02cc4f8f5a9a": {
       "original": "请输入",
       "translated": "Por favor, digite",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Please enter/input",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "st12uv34wx56": {
+    "537b39a8b56f": {
       "original": "必填",
       "translated": "Obrigatório",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Required",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "tu23vw45xy67": {
+    "c20cba899215": {
       "original": "可选",
       "translated": "Opcional",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Optional",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "uv34wx56yz78": {
+    "18c63459a2c0": {
       "original": "默认",
       "translated": "Padrão",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Default",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "vw45xy67za89": {
+    "7854b52a889b": {
       "original": "启用",
       "translated": "Ativar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Enable",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "wx56yz78ab90": {
+    "710ad08b1141": {
       "original": "禁用",
       "translated": "Desativar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Disable",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "xy67za89bc01": {
+    "cc42dd3170fd": {
       "original": "开启",
       "translated": "Ligar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Turn on",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "yz78ab90cd12": {
+    "b15d91274e9f": {
       "original": "关闭",
       "translated": "Desligar",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Turn off/Close",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "za89bc01de23": {
+    "aa7d858f31fa": {
       "original": "正在处理",
       "translated": "Processando",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Processing",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "ab90cd12ef34": {
+    "7be39bafe0d6": {
       "original": "处理完成",
       "translated": "Processamento concluído",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "Processing complete",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "bc01de23fg45": {
+    "01ceb3edde98": {
       "original": "无数据",
       "translated": "Sem dados",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "No data",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     },
-    "cd12ef34gh56": {
+    "4726ff4e62d3": {
       "original": "暂无内容",
       "translated": "Sem conteúdo",
       "source_lang": "zh",
       "translator": "manual",
       "file_path": "common",
       "line_number": 0,
-      "context": "No content yet",
+      "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
     }
