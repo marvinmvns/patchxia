@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-02-02T00:00:00",
+  "description": "Strings pendentes de tradução - edite este arquivo para adicionar traduções manuais",
+  "instructions": {
+    "como_usar": "1. Encontre a string que deseja traduzir pelo hash",
+    "passo_2": "2. Adicione a tradução em 'suggested_translation'",
+    "passo_3": "3. Execute o script com --use-llm para processar",
+    "nota": "Strings traduzidas serão movidas automaticamente para translations.json"
+  },
+  "total_pending": 0,
+  "pending": {}
+}
