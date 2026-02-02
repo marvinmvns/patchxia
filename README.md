@@ -1,77 +1,171 @@
-# Xiaozhi Server Translation Patch (Português Brasileiro) 🇧🇷
+# Patch de Traducao PT-BR para xiaozhi-esp32-server
 
-Este projeto fornece um sistema de patch para traduzir o servidor do Xiaozhi ESP32 para Português do Brasil (pt-BR). Ele funciona modificando os arquivos originais do servidor (frontend e backend) para substituir textos em chinês por suas traduções em português.
+Sistema de patch para traducao automatica de Chines/Ingles para Portugues do Brasil do projeto [xiaozhi-esp32-server](https://github.com/xinnan-tech/xiaozhi-esp32-server).
 
-## 📋 Funcionalidades
+## Caracteristicas
 
-- **Tradução do Frontend (Web)**: Gera arquivos de internacionalização (`i18n`) e atualiza o código para suportar o novo idioma.
-- **Tradução do Backend (Python)**: Substitui strings diretamente no código fonte do servidor Python.
-- **Dicionário Centralizado**: Utiliza um arquivo `glossary.json` para gerenciar todas as traduções.
-- **Scanner de Strings**: Capacidade de escanear o código em busca de novas strings que precisam de tradução.
+- **Traducao incremental**: Traduz apenas strings novas, preservando traducoes anteriores
+- **Nao quebra o codigo**: Validacao automatica de sintaxe apos aplicar o patch
+- **Backup automatico**: Cria backup antes de modificar qualquer arquivo
+- **Rollback facil**: Restaura o estado anterior com um comando
+- **Multiplos backends**: Suporte a Google Translate, MyMemory API, e traducao manual
+- **Banco de traducoes**: Armazena traducoes para reutilizacao e versionamento
 
-## 🚀 Como Usar
-
-### Pré-requisitos
-- Python 3 instalado.
-- Acesso aos arquivos do servidor Xiaozhi (este patch deve estar dentro da pasta `translation_patch` na raiz do projeto do servidor).
-
-### 1. Aplicar Traduções
-Para aplicar as traduções existentes ao servidor, execute o seguinte comando a partir da raiz do repositório:
+## Instalacao Rapida
 
 ```bash
-python translation_patch/manager.py apply
+# 1. Clone este repositorio de patch
+git clone https://github.com/marvinmvns/patchxia.git
+cd patchxia
+
+# 2. Clone o projeto original (em outro diretorio)
+git clone https://github.com/xinnan-tech/xiaozhi-esp32-server.git ../xiaozhi-esp32-server
+
+# 3. Aplique o patch
+chmod +x apply-patch.sh
+./apply-patch.sh ../xiaozhi-esp32-server
 ```
 
-Isso irá:
-1. Ler o dicionário `glossary.json`.
-2. Processar os arquivos do Frontend (Web) e Backend (Server).
-3. Substituir os textos originais pelos textos traduzidos.
+## Uso
 
-### 2. Atualizar ou Adicionar Traduções
-Se você encontrar textos que ainda não foram traduzidos ou quiser melhorar uma tradução existente:
-
-1. **Escaneie o código** para encontrar novas strings:
-   ```bash
-   python translation_patch/manager.py scan
-   ```
-   Isso atualizará o arquivo `translation_patch/glossary.json` com novas entradas marcadas como "TODO".
-
-2. **Edite o Glossário**:
-   Abra o arquivo `translation_patch/glossary.json` e adicione as traduções desejadas nos campos marcados como "TODO" ou vazios.
-
-3. **Reaplique o Patch**:
-   ```bash
-   python translation_patch/manager.py apply
-   ```
-
-### 3. Tradução Automática (Opcional)
-Existe um script auxiliar `translate_glossary.py` que contém um mapeamento de termos comuns. Você pode executá-lo para preencher automaticamente algumas traduções padrão:
+### Aplicar traducao incremental (padrao)
 
 ```bash
-python translation_patch/translate_glossary.py
+./apply-patch.sh /caminho/para/xiaozhi-esp32-server
 ```
 
-## 📂 Estrutura do Projeto
+### Simular traducao (dry-run)
 
-- `manager.py`: O script principal CLI que gerencia o processo de scan e aplicação.
-- `glossary.json`: O "banco de dados" de traduções. Contém pares de chave-valor (Chinês -> Português).
-- `translate_glossary.py`: Script auxiliar para preencher traduções comuns.
-- `processors/`: Contém a lógica específica para modificar diferentes partes do sistema:
-  - `web.py`: Processador para o Frontend (Vue/JS).
-  - `server.py`: Processador para o Backend (Python).
-  - `mobile.py`: (Experimental) Processador para componentes móveis.
-  - `api.py`: Processador para APIs.
+```bash
+./apply-patch.sh /caminho/para/xiaozhi-esp32-server --dry-run
+```
 
-## ⚠️ Avisos Importantes
+### Usar traducao automatica para strings novas
 
-1. **Backup**: Este patch modifica os arquivos originais do código fonte. Recomenda-se fazer um backup ou usar git para que você possa descartar as alterações se algo der errado (`git checkout .`).
-2. **Segurança**: A tradução do backend usa substituição direta de strings. Embora projetado para ser seguro, verifique se o servidor inicia corretamente após a aplicação do patch.
-3. **Persistência**: Se você atualizar o código do servidor original (git pull do repositório original), precisará reaplicar este patch.
+```bash
+./apply-patch.sh /caminho/para/xiaozhi-esp32-server --use-llm
+```
 
-## 🤝 Contribuindo
+### Restaurar backup
 
-Contribuições para o glossário são muito bem-vindas! Se você melhorou as traduções no seu `glossary.json`, considere enviar um Pull Request com as atualizações.
+```bash
+./apply-patch.sh /caminho/para/xiaozhi-esp32-server --rollback
+```
 
-1. Faça um fork do projeto.
-2. Melhore o `glossary.json`.
-3. Envie um PR.
+### Apenas validar codigo
+
+```bash
+./apply-patch.sh /caminho/para/xiaozhi-esp32-server --validate
+```
+
+## Opcoes Disponiveis
+
+| Opcao | Descricao |
+|-------|-----------|
+| `--incremental` | Traduz apenas strings novas (padrao) |
+| `--full` | Retraduz todas as strings |
+| `--dry-run` | Mostra o que seria traduzido sem aplicar |
+| `--rollback` | Restaura o backup mais recente |
+| `--use-llm` | Usa servicos de traducao para strings novas |
+| `--validate` | Apenas valida o codigo apos patch |
+| `--help` | Mostra ajuda |
+
+## Estrutura do Projeto
+
+```
+patchxia/
+├── apply-patch.sh          # Script principal
+├── scripts/
+│   └── translator.py       # Motor de traducao Python
+├── translations/
+│   ├── translations.json   # Banco de traducoes verificadas
+│   └── pending.json        # Strings pendentes de traducao
+├── backups/                # Backups automaticos
+├── tests/
+│   └── test_translation.sh # Script de teste
+├── config/                 # Configuracoes
+└── logs/                   # Logs de execucao
+```
+
+## Fluxo de Trabalho Recomendado
+
+### Primeira vez
+
+1. Clone o projeto original
+2. Aplique o patch com `--dry-run` para ver o que sera traduzido
+3. Aplique o patch com `--use-llm` para traduzir automaticamente
+4. Revise as traducoes em `translations/pending.json`
+5. Mova traducoes aprovadas para `translations/translations.json`
+
+### Atualizacoes
+
+1. Faca pull do projeto original
+2. Execute o patch novamente (modo incremental)
+3. Novas strings serao adicionadas a `pending.json`
+4. Revise e aprove as novas traducoes
+
+## Adicionar Traducoes Manuais
+
+Edite o arquivo `translations/translations.json`:
+
+```json
+{
+  "translations": {
+    "hash_unico": {
+      "original": "文本原文",
+      "translated": "Texto traduzido",
+      "source_lang": "zh",
+      "translator": "manual",
+      "verified": true
+    }
+  }
+}
+```
+
+## Executar Testes
+
+```bash
+# Teste basico (dry-run)
+./tests/test_translation.sh
+
+# Teste completo
+./tests/test_translation.sh --full
+
+# Limpar ambiente de teste
+./tests/test_translation.sh --clean
+```
+
+## Dependencias
+
+- Python 3.6+
+- jq (para manipulacao JSON no bash)
+- Conexao com internet (para traducao automatica)
+
+### Instalar dependencias (Ubuntu/Debian)
+
+```bash
+sudo apt-get install python3 jq
+```
+
+## Servicos de Traducao Suportados
+
+1. **MyMemory API** (gratuito, 1000 palavras/dia)
+2. **Google Translate** (gratuito via API web)
+3. **LibreTranslate** (auto-hospedavel)
+4. **Traducao Manual** (via banco de traducoes)
+
+## Contribuir
+
+1. Faca fork deste repositorio
+2. Adicione traducoes em `translations/translations.json`
+3. Teste com `./tests/test_translation.sh --full`
+4. Envie um Pull Request
+
+## Licenca
+
+MIT License - Sinta-se livre para usar e modificar.
+
+## Links
+
+- Projeto Original: https://github.com/xinnan-tech/xiaozhi-esp32-server
+- Reportar Problemas: Abra uma issue neste repositorio
