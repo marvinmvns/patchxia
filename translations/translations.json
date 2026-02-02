@@ -1,7 +1,7 @@
 {
   "version": "2.0.0",
-  "last_updated": "2026-02-02T19:51:00.475552",
-  "total_translations": 97,
+  "last_updated": "2026-02-02T19:53:49.258833",
+  "total_translations": 107,
   "translations": {
     "7c306e883270": {
       "original": "语音识别",
@@ -1069,6 +1069,116 @@
       "context": "",
       "date_added": "2026-02-02T00:00:00",
       "verified": true
+    },
+    "00f9048f9583": {
+      "original": "服务器配置文件",
+      "translated": "Perfil do Servidor",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 1,
+      "context": "# 服务器配置文件",
+      "date_added": "2026-02-02T19:53:31.553110",
+      "verified": false
+    },
+    "b8ce95a651ee": {
+      "original": "小智服务器",
+      "translated": "Servidor de Sabedoria",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 3,
+      "context": "name: \"小智服务器\"  # 服务器名称",
+      "date_added": "2026-02-02T19:53:33.681110",
+      "verified": false
+    },
+    "c4ba24285d62": {
+      "original": "服务器名称",
+      "translated": "Nome do servidor",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 3,
+      "context": "name: \"小智服务器\"  # 服务器名称",
+      "date_added": "2026-02-02T19:53:35.690726",
+      "verified": false
+    },
+    "7ff555812dbb": {
+      "original": "语音识别配置",
+      "translated": "Configuração de Reconhecimento de Voz",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 7,
+      "context": "# 语音识别配置",
+      "date_added": "2026-02-02T19:53:37.889054",
+      "verified": false
+    },
+    "a4ecb92d1845": {
+      "original": "语音识别引擎配置",
+      "translated": "Configuração do mecanismo de reconhecimento de voz",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 11,
+      "context": "description: \"语音识别引擎配置\"",
+      "date_added": "2026-02-02T19:53:40.223772",
+      "verified": false
+    },
+    "e9217961ccac": {
+      "original": "语音合成配置",
+      "translated": "Configuração de Síntese de Fala",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 13,
+      "context": "# 语音合成配置",
+      "date_added": "2026-02-02T19:53:41.958011",
+      "verified": false
+    },
+    "07631a45950b": {
+      "original": "语音合成引擎配置",
+      "translated": "Configuração do mecanismo de síntese de fala",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 17,
+      "context": "description: \"语音合成引擎配置\"",
+      "date_added": "2026-02-02T19:53:43.672141",
+      "verified": false
+    },
+    "03d8a25f66c3": {
+      "original": "大语言模型配置",
+      "translated": "Configuração de modelo de linguagem grande",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 19,
+      "context": "# 大语言模型配置",
+      "date_added": "2026-02-02T19:53:45.546777",
+      "verified": false
+    },
+    "673518694181": {
+      "original": "日志配置",
+      "translated": "Configuração de Log",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/server.yaml",
+      "line_number": 25,
+      "context": "# 日志配置",
+      "date_added": "2026-02-02T19:53:47.128552",
+      "verified": false
+    },
+    "6d56e9589652": {
+      "original": "小智ESP32服务器",
+      "translated": "Servidor Xiaozhi ESP32",
+      "source_lang": "zh",
+      "translator": "mymemory",
+      "file_path": "/home/user/patchxia/tests/test_project/config/settings.json",
+      "line_number": 2,
+      "context": "\"app_name\": \"小智ESP32服务器\",",
+      "date_added": "2026-02-02T19:53:49.258807",
+      "verified": false
     }
   }
 }
