@@ -63,6 +63,12 @@ def translate_mymemory(text: str, source_lang: str = 'zh') -> str:
                 translated = data.get('responseData', {}).get('translatedText', '')
                 if translated and translated.lower() != text.lower():
                     return translated
+            elif data.get('responseStatus') == 429:
+                return "ERR_429"
+    except urllib.error.HTTPError as e:
+        if e.code == 429:
+            return "ERR_429"
+        print(f"  [MyMemory HTTP erro: {e}]")
     except Exception as e:
         print(f"  [MyMemory erro: {e}]")
     return ""
@@ -82,30 +88,96 @@ def translate_google(text: str, source_lang: str = 'zh') -> str:
                 translated = ''.join(part[0] for part in data[0] if part[0])
                 if translated:
                     return translated
+    except urllib.error.HTTPError as e:
+        if e.code == 429:
+            return "ERR_429"
+        print(f"  [Google HTTP erro: {e}]")
     except Exception as e:
         print(f"  [Google erro: {e}]")
     return ""
 
 
-def translate_text(text: str, source_lang: str = 'zh') -> tuple:
-    """Tenta traduzir usando múltiplos serviços"""
-    # Tentar MyMemory primeiro
-    time.sleep(0.5)
-    result = translate_mymemory(text, source_lang)
-    if result:
-        return result, 'mymemory'
+# Circuit breaker for MyMemory
+mymemory_enabled = True
+mymemory_fail_count = 0
 
-    # Tentar Google
-    time.sleep(0.5)
+def translate_text(text: str, source_lang: str = 'zh') -> tuple:
+    """Tenta traduzir usando múltiplos serviços com fallback rápido (Fail-Fast)"""
+    global mymemory_enabled, mymemory_fail_count
+    
+    # MyMemory Strategy: Try if enabled
+    if mymemory_enabled:
+        time.sleep(0.1) # Minimal sleep
+        result = translate_mymemory(text, source_lang)
+        
+        if result and result != "ERR_429":
+            return result, 'mymemory'
+            
+        if result == "ERR_429":
+            # Count failures
+            mymemory_fail_count += 1
+            if mymemory_fail_count >= 5:
+                print(f"  [SISTEMA] MyMemory desativado permanentemente (Muitos 429).")
+                mymemory_enabled = False
+    
+    # Google Strategy: Direct attempt
+    time.sleep(0.2)
     result = translate_google(text, source_lang)
-    if result:
+    
+    if result and result != "ERR_429":
         return result, 'google'
+    
+    # Fail fast if Google also denies
+    if result == "ERR_429":
+        # Don't sleep, just return error so we move to next
+        return "", 'failed_429'
 
     return "", 'failed'
 
 
+import threading
+
+# Global rate limit tracker
+rate_limit_lock = threading.Lock()
+consecutive_429_count = 0
+
+def translate_worker(args):
+    global consecutive_429_count
+    hash_key, entry, review = args
+    original = entry['original']
+    source_lang = entry.get('source_lang', 'zh')
+    
+    # Removed global "Cool Down" sleep to satisfy user request for SPEED.
+    # We accept some failures rather than pausing everything.
+
+    translated, service = translate_text(original, source_lang)
+    
+    if translated and translated != "ERR_429" and service != 'failed_429':
+        with rate_limit_lock:
+             consecutive_429_count = 0 # Reset on success
+             
+        return hash_key, {
+            'original': original,
+            'translated': translated,
+            'source_lang': source_lang,
+            'translator': service,
+            'file_path': entry.get('file_path', 'auto'),
+            'line_number': entry.get('line_number', 0),
+            'context': entry.get('context', ''),
+            'date_added': datetime.now().isoformat(),
+            'verified': False
+        }
+    elif service == 'failed_429':
+        # Just fail silently/quickly
+        return hash_key, "ERR_429"
+        
+    return None
+
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 def translate_pending(limit: int = None, review: bool = False):
-    """Traduz strings pendentes"""
+    """Traduz strings pendentes com concorrência"""
+    global consecutive_429_count
 
     # Carregar arquivos
     translations_data = load_json(TRANSLATIONS_FILE)
@@ -119,7 +191,7 @@ def translate_pending(limit: int = None, review: bool = False):
         return
 
     print(f"\n{'='*60}")
-    print(f"TRADUÇÃO AUTOMÁTICA DE STRINGS PENDENTES")
+    print(f"TRADUÇÃO AUTOMÁTICA DE STRINGS PENDENTES (CONCORRENTE)")
     print(f"{'='*60}")
     print(f"Pendentes: {len(pending)}")
     print(f"Limite: {limit or 'Todas'}")
@@ -133,64 +205,78 @@ def translate_pending(limit: int = None, review: bool = False):
     translated_count = 0
     failed_count = 0
     new_translations = {}
-
-    for i, (hash_key, entry) in enumerate(items, 1):
-        original = entry['original']
-        source_lang = entry.get('source_lang', 'zh')
-
-        print(f"[{i}/{len(items)}] {original[:50]}...")
-
-        # Traduzir
-        translated, service = translate_text(original, source_lang)
-
-        if translated:
-            print(f"  -> {translated[:50]}... [{service}]")
-
-            if review:
-                # Modo revisão interativo
-                print(f"\n  Original:  {original}")
-                print(f"  Tradução:  {translated}")
-                choice = input("  Aceitar? [S/n/e(ditar)]: ").strip().lower()
-
-                if choice == 'e':
-                    translated = input("  Nova tradução: ").strip()
-                    if not translated:
-                        print("  Pulando...")
-                        failed_count += 1
-                        continue
-                elif choice == 'n':
-                    print("  Pulando...")
+    
+    # Use ThreadPoolExecutor
+    max_workers = 4  # Reduced to avoid 429s
+    print(f"Iniciando tradução com {max_workers} threads...")
+    
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Prepare args
+        future_to_item = {
+            executor.submit(translate_worker, (hash_key, entry, review)): hash_key 
+            for hash_key, entry in items
+        }
+        
+        total = len(items)
+        done = 0
+        
+        for future in as_completed(future_to_item):
+            done += 1
+            result = future.result()
+            
+            if result:
+                hash_key, trans_entry = result
+                
+                # Check for 429 specific return
+                if trans_entry == "ERR_429":
                     failed_count += 1
+                    if done % 10 == 0:
+                        print(f"[{done}/{total}] ⚠️  Rate Limit (429) - Pausando...")
+                        time.sleep(5)
                     continue
 
-            # Adicionar ao banco
-            new_translations[hash_key] = {
-                'original': original,
-                'translated': translated,
-                'source_lang': source_lang,
-                'translator': service,
-                'file_path': entry.get('file_path', 'auto'),
-                'line_number': entry.get('line_number', 0),
-                'context': entry.get('context', ''),
-                'date_added': datetime.now().isoformat(),
-                'verified': False
-            }
-            translated_count += 1
-        else:
-            print(f"  -> FALHA")
-            failed_count += 1
+                new_translations[hash_key] = trans_entry
+                translated_count += 1
+                
+                if done % 10 == 0:
+                    print(f"[{done}/{total}] Traduzido: {trans_entry['translated'][:30]}...")
+                    
+                    # SAVE PROGRESS INCREMENTALLY
+                    try:
+                        # Update main dicts
+                        translations.update(new_translations)
+                        for k in new_translations:
+                            if k in pending:
+                                del pending[k]
+                        
+                        # Save
+                        translations_data['translations'] = translations
+                        translations_data['total_translations'] = len(translations)
+                        translations_data['last_updated'] = datetime.now().isoformat()
+                        save_json(TRANSLATIONS_FILE, translations_data)
 
-    # Salvar resultados
+                        pending_data['pending'] = pending
+                        pending_data['total_pending'] = len(pending)
+                        pending_data['last_updated'] = datetime.now().isoformat()
+                        save_json(PENDING_FILE, pending_data)
+                        
+                        # Clear processed dict to avoid processing again
+                        new_translations = {}
+                    except Exception as e:
+                        print(f"Erro ao salvar progresso parcial: {e}")
+
+            else:
+                failed_count += 1
+                if done % 10 == 0:
+                    print(f"[{done}/{total}] Falha ou vazio")
+
+    # Final Save (for any remainders)
     if new_translations:
-        # Mover para translations
         translations.update(new_translations)
+        for k in new_translations:
+            if k in pending:
+                del pending[k]
 
-        # Remover do pending
-        for hash_key in new_translations.keys():
-            if hash_key in pending:
-                del pending[hash_key]
-
-        # Salvar arquivos
         translations_data['translations'] = translations
         translations_data['total_translations'] = len(translations)
         translations_data['last_updated'] = datetime.now().isoformat()
@@ -201,16 +287,15 @@ def translate_pending(limit: int = None, review: bool = False):
         pending_data['last_updated'] = datetime.now().isoformat()
         save_json(PENDING_FILE, pending_data)
 
-        print(f"\n{'='*60}")
-        print(f"RESULTADO")
-        print(f"{'='*60}")
-        print(f"Traduzidas: {translated_count}")
-        print(f"Falharam:   {failed_count}")
-        print(f"Total no banco: {len(translations)}")
-        print(f"Pendentes restantes: {len(pending)}")
-        print(f"{'='*60}\n")
-    else:
-        print("\nNenhuma tradução foi salva.")
+    print(f"\n{'='*60}")
+    print(f"RESULTADO FINAL")
+    print(f"{'='*60}")
+    print(f"Traduzidas: {translated_count}")
+    print(f"Falharam:   {failed_count}")
+    print(f"Total no banco: {len(translations)}")
+    print(f"Pendentes restantes: {len(pending)}")
+    print(f"{'='*60}\n")
+
 
 
 def export_pending_csv():

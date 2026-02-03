@@ -1,0 +1,613 @@
+[0;34m
+╔═══════════════════════════════════════════════════════════════════╗
+║     XIAOZHI ESP32 SERVER - Patch de Tradução PT-BR v1.0.0        ║
+║                                                                   ║
+║  Traduz Chinês/Inglês → Português do Brasil                      ║
+║  Repositório: github.com/xinnan-tech/xiaozhi-esp32-server        ║
+╚═══════════════════════════════════════════════════════════════════╝
+[0m
+[0;32m[INFO][0m 2026-02-02 21:26:48 - Verificando dependências...
+[0;32m[INFO][0m 2026-02-02 21:26:48 - Todas as dependências estão instaladas
+[0;32m[INFO][0m 2026-02-02 21:26:48 - Verificando projeto em: /home/bigfriend/Documentos/bora/xiaozhi-esp32-server
+[0;32m[INFO][0m 2026-02-02 21:26:48 - Projeto verificado com sucesso (indicadores: 4/5)
+[0;32m[INFO][0m 2026-02-02 21:26:48 - Iniciando processo de tradução...
+
+======================================================================
+SISTEMA DE TRADUÇÃO PT-BR v2.0
+======================================================================
+Projeto: /home/bigfriend/Documentos/bora/xiaozhi-esp32-server
+Dry Run: Sim
+Tradução Automática: Não
+Traduções no banco: 7912
+======================================================================
+
+Arquivos encontrados: 342
+
+Processando: .github/workflows/docker-image.yml
+  -> 3 traduções encontradas (dry-run)
+Processando: docker-setup.sh
+  -> 127 traduções encontradas (dry-run)
+Processando: docs/docker/start.sh
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-api/src/main/resources/application-dev.yml
+  -> 9 traduções encontradas (dry-run)
+Processando: main/manager-api/src/main/resources/application.yml
+  -> 5 traduções encontradas (dry-run)
+Processando: main/manager-api/src/main/resources/db/changelog/db.changelog-master.yaml
+  -> 3 traduções encontradas (dry-run)
+Processando: main/manager-mobile/package.json
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-mobile/scripts/postupgrade.js
+  -> 5 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/App.vue
+  -> 6 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/components/custom-tabs/index.vue
+Processando: main/manager-mobile/src/layouts/fg-tabbar/fg-tabbar.vue
+Processando: main/manager-mobile/src/manifest.json
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages-sub/demo/index.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages.json
+  -> 11 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/agent/edit.vue
+  -> 36 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/agent/index.vue
+  -> 7 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/agent/tools.vue
+  -> 25 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/chat-history/detail.vue
+  -> 14 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/chat-history/index.vue
+  -> 7 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/device-config/components/ultrasonic-config.vue
+  -> 9 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/device-config/components/wifi-config.vue
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/device-config/components/wifi-selector.vue
+  -> 11 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/device-config/index.vue
+  -> 8 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/device/index.vue
+  -> 14 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/forgot-password/index.vue
+  -> 11 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/index/index.vue
+  -> 15 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/login/index.vue
+  -> 12 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/register/index.vue
+  -> 10 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/settings/index.vue
+  -> 12 traduções encontradas (dry-run)
+Processando: main/manager-mobile/src/pages/voiceprint/index.vue
+  -> 21 traduções encontradas (dry-run)
+Processando: main/manager-web/babel.config.js
+Processando: main/manager-web/public/generator/assets/index-B8r0c7xg.js
+  -> 920 traduções encontradas (dry-run)
+Processando: main/manager-web/public/offline.html
+  -> 5 traduções encontradas (dry-run)
+Processando: main/manager-web/src/App.vue
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/api.js
+Processando: main/manager-web/src/apis/httpRequest.js
+  -> 3 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/admin.js
+  -> 8 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/agent.js
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/device.js
+  -> 7 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/dict.js
+  -> 20 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/knowledgeBase.js
+  -> 13 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/model.js
+  -> 22 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/ota.js
+  -> 7 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/timbre.js
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/user.js
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/voiceClone.js
+  -> 6 traduções encontradas (dry-run)
+Processando: main/manager-web/src/apis/module/voiceResource.js
+  -> 6 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/AddModelDialog.vue
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/AudioPlayer.vue
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/CacheViewer.vue
+  -> 6 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/ChangePasswordDialog.vue
+Processando: main/manager-web/src/components/ChatHistoryDialog.vue
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/ContextProviderDialog.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/FirmwareDialog.vue
+Processando: main/manager-web/src/components/FunctionDialog.vue
+  -> 13 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/HeaderBar.vue
+  -> 14 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/KnowledgeBaseDialog.vue
+  -> 6 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/ManualAddDeviceDialog.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/ModelEditDialog.vue
+  -> 11 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/ParamDialog.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/ProviderDialog.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/TtsModel.vue
+  -> 3 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/VersionFooter.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/ViewPasswordDialog.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/VoiceCloneDialog.vue
+  -> 11 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/VoicePrintDialog.vue
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-web/src/components/VoiceResourceDialog.vue
+Processando: main/manager-web/src/i18n/de.js
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/i18n/en.js
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/i18n/index.js
+Processando: main/manager-web/src/i18n/vi.js
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/i18n/zh_CN.js
+  -> 833 traduções encontradas (dry-run)
+Processando: main/manager-web/src/i18n/zh_TW.js
+  -> 844 traduções encontradas (dry-run)
+Processando: main/manager-web/src/main.js
+Processando: main/manager-web/src/registerServiceWorker.js
+  -> 12 traduções encontradas (dry-run)
+Processando: main/manager-web/src/router/index.js
+  -> 8 traduções encontradas (dry-run)
+Processando: main/manager-web/src/service-worker.js
+  -> 6 traduções encontradas (dry-run)
+Processando: main/manager-web/src/store/index.js
+Processando: main/manager-web/src/utils/cacheViewer.js
+  -> 8 traduções encontradas (dry-run)
+Processando: main/manager-web/src/utils/constant.js
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/utils/featureManager.js
+  -> 12 traduções encontradas (dry-run)
+Processando: main/manager-web/src/utils/format.js
+Processando: main/manager-web/src/utils/index.js
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/AgentTemplateManagement.vue
+  -> 9 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/DeviceManagement.vue
+Processando: main/manager-web/src/views/DictManagement.vue
+  -> 9 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/FeatureManagement.vue
+  -> 13 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/KnowledgeBaseManagement.vue
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/KnowledgeFileUpload.vue
+  -> 44 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/ModelConfig.vue
+  -> 3 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/OtaManagement.vue
+  -> 3 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/ParamsManagement.vue
+  -> 2 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/ProviderManagement.vue
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/ServerSideManager.vue
+Processando: main/manager-web/src/views/TemplateQuickConfig.vue
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/UserManagement.vue
+Processando: main/manager-web/src/views/VoiceCloneManagement.vue
+  -> 24 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/VoicePrint.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/VoiceResourceManagement.vue
+  -> 1 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/home.vue
+  -> 4 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/login.vue
+  -> 11 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/register.vue
+  -> 16 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/retrievePassword.vue
+  -> 14 traduções encontradas (dry-run)
+Processando: main/manager-web/src/views/roleConfig.vue
+  -> 19 traduções encontradas (dry-run)
+Processando: main/manager-web/vue.config.js
+Processando: main/xiaozhi-server/app.py
+  -> 30 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/config.yaml
+  -> 410 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/config/config_loader.py
+  -> 21 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/config/logger.py
+  -> 17 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/config/manage_api_client.py
+  -> 39 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/config/settings.py
+  -> 7 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/config_from_api.yaml
+  -> 18 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/api/base_handler.py
+  -> 3 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/api/ota_handler.py
+  -> 34 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/api/vision_handler.py
+  -> 33 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/auth.py
+  -> 4 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/connection.py
+  -> 212 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/abortHandle.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/helloHandle.py
+  -> 32 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/intentHandler.py
+  -> 30 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/receiveAudioHandle.py
+  -> 34 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/reportHandle.py
+  -> 16 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/sendAudioHandle.py
+  -> 47 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textHandle.py
+  -> 3 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textHandler/abortMessageHandler.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textHandler/helloMessageHandler.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textHandler/iotMessageHandler.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textHandler/listenMessageHandler.py
+  -> 12 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textHandler/mcpMessageHandler.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textHandler/pingMessageHandler.py
+  -> 7 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textHandler/serverMessageHandler.py
+  -> 13 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textMessageHandler.py
+  -> 3 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textMessageHandlerRegistry.py
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textMessageProcessor.py
+  -> 12 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/handle/textMessageType.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/http_server.py
+  -> 8 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/aliyun.py
+  -> 47 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/aliyun_stream.py
+  -> 59 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/aliyunbl_stream.py
+  -> 63 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/baidu.py
+  -> 10 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/base.py
+  -> 61 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/doubao.py
+  -> 9 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/doubao_stream.py
+  -> 64 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/dto/dto.py
+  -> 4 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/fun_local.py
+  -> 14 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/openai.py
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/qwen3_asr_flash.py
+  -> 20 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/sherpa_onnx_local.py
+  -> 12 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/tencent.py
+  -> 44 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/utils.py
+  -> 11 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/vosk.py
+  -> 16 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/asr/xunfei_stream.py
+  -> 63 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/intent/base.py
+  -> 9 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/intent/function_call/function_call.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/intent/intent_llm/intent_llm.py
+  -> 104 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/intent/nointent/nointent.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/AliBL/AliBL.py
+  -> 22 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/base.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/coze/coze.py
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/dify/dify.py
+  -> 9 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/fastgpt/fastgpt.py
+  -> 4 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/gemini/gemini.py
+  -> 21 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/homeassistant/homeassistant.py
+  -> 20 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/ollama/ollama.py
+  -> 20 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/openai/openai.py
+  -> 7 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/system_prompt.py
+  -> 3 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/llm/xinference/xinference.py
+  -> 3 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/memory/mem0ai/mem0ai.py
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/memory/mem_local_short/mem_local_short.py
+  -> 48 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/memory/nomem/nomem.py
+Processando: main/xiaozhi-server/core/providers/tools/base/__init__.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/base/tool_executor.py
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/base/tool_types.py
+  -> 12 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/device_iot/__init__.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/device_iot/iot_descriptor.py
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/device_iot/iot_executor.py
+  -> 31 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/device_iot/iot_handler.py
+  -> 13 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/device_mcp/__init__.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/device_mcp/mcp_client.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/device_mcp/mcp_executor.py
+  -> 9 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/device_mcp/mcp_handler.py
+  -> 53 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/mcp_endpoint/__init__.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/mcp_endpoint/mcp_endpoint_client.py
+  -> 7 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/mcp_endpoint/mcp_endpoint_executor.py
+  -> 9 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/mcp_endpoint/mcp_endpoint_handler.py
+  -> 66 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/server_mcp/__init__.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/server_mcp/mcp_client.py
+  -> 23 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/server_mcp/mcp_executor.py
+  -> 8 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/server_mcp/mcp_manager.py
+  -> 34 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/server_plugins/__init__.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/server_plugins/plugin_executor.py
+  -> 13 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/unified_tool_handler.py
+  -> 50 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tools/unified_tool_manager.py
+  -> 25 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/alibl_stream.py
+  -> 83 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/aliyun.py
+  -> 34 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/aliyun_stream.py
+  -> 83 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/base.py
+  -> 33 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/custom.py
+  -> 4 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/default.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/doubao.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/dto/dto.py
+  -> 14 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/edge.py
+  -> 7 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/fishspeech.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/gpt_sovits_v2.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/gpt_sovits_v3.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/huoshan_double_stream.py
+  -> 94 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/index_stream.py
+  -> 26 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/linkerai.py
+  -> 27 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/minimax_httpstream.py
+  -> 37 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/openai.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/paddle_speech.py
+  -> 18 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/tencent.py
+  -> 28 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/ttson.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/tts/xunfei_stream.py
+  -> 86 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/vad/base.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/vad/silero.py
+  -> 13 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/providers/vllm/openai.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/asr.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/audioRateController.py
+  -> 28 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/auth.py
+  -> 24 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/cache/config.py
+  -> 14 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/cache/manager.py
+  -> 24 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/cache/strategies.py
+  -> 9 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/context_provider.py
+  -> 11 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/current_time.py
+  -> 9 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/dialogue.py
+  -> 15 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/gc_manager.py
+  -> 20 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/intent.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/llm.py
+  -> 3 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/memory.py
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/modules_initialize.py
+  -> 19 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/opus_encoder_utils.py
+  -> 31 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/output_counter.py
+  -> 3 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/p3.py
+  -> 6 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/prompt_manager.py
+  -> 49 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/textUtils.py
+  -> 18 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/tts.py
+  -> 32 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/util.py
+  -> 60 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/vad.py
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/vllm.py
+  -> 3 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/voiceprint_provider.py
+  -> 45 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/utils/wakeup_word.py
+  -> 21 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/core/websocket_server.py
+  -> 33 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/docker-compose.yml
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/docker-compose_all.yml
+  -> 10 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/mcp_server_settings.json
+  -> 7 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/performance_tester.py
+  -> 8 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/performance_tester/performance_tester_asr.py
+  -> 76 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/performance_tester/performance_tester_llm.py
+  -> 120 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/performance_tester/performance_tester_stream_asr.py
+  -> 61 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/performance_tester/performance_tester_stream_tts.py
+  -> 93 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/performance_tester/performance_tester_tts.py
+  -> 44 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/performance_tester/performance_tester_vllm.py
+  -> 43 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/change_role.py
+  -> 12 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/get_news_from_chinanews.py
+  -> 66 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/get_news_from_newsnow.py
+  -> 95 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/get_time.py
+  -> 37 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/get_weather.py
+  -> 74 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/handle_exit_intent.py
+  -> 8 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/hass_get_state.py
+  -> 14 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/hass_init.py
+  -> 6 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/hass_play_music.py
+  -> 8 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/hass_set_state.py
+  -> 26 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/play_music.py
+  -> 52 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/functions/search_from_ragflow.py
+  -> 42 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/loadplugins.py
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/plugins_func/register.py
+  -> 31 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/hiyori_pro_zh/runtime/hiyori_pro_t11.cdi3.json
+  -> 90 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/hiyori_pro_zh/runtime/hiyori_pro_t11.physics3.json
+  -> 11 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/app.js
+  -> 11 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/config/default-mcp-tools.json
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/config/manager.js
+Processando: main/xiaozhi-server/test/js/core/audio/opus-codec.js
+  -> 14 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/core/audio/player.js
+  -> 26 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/core/audio/recorder.js
+  -> 15 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/core/audio/stream-context.js
+  -> 7 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/core/mcp/tools.js
+  -> 42 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/core/network/ota-connector.js
+  -> 5 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/core/network/websocket.js
+  -> 48 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/live2d/live2d.js
+  -> 14 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/ui/background-load.js
+  -> 2 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/ui/controller.js
+  -> 22 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/js/utils/blocking-queue.js
+Processando: main/xiaozhi-server/test/js/utils/logger.js
+  -> 1 traduções encontradas (dry-run)
+Processando: main/xiaozhi-server/test/test_page.html
+  -> 62 traduções encontradas (dry-run)
+
+======================================================================
+ESTATÍSTICAS
+======================================================================
+Arquivos processados:    285
+Strings encontradas:     8065
+Strings traduzidas:      8034
+Strings pendentes:       31
+Total no banco:          7912
+Total pendentes:         362
+======================================================================
+
+STRINGS PENDENTES (primeiras 10):
+----------------------------------------------------------------------
+  建立ASR连接失败: {str(e)}
+  [火山引擎TTS] 第{i+1}次测试失败: {str(e)}
+  [4]侧发左
+  [5]侧发左
+  [6]侧发左
+  [0]侧发右
+  [1]侧发右
+  [2]侧发右
+  [3]侧发右
+  , err)
+      }
+    })
+    
+    // 设置配网tabBar文本
+   
+  ... e mais 352
+----------------------------------------------------------------------
+[0;32m[INFO][0m 2026-02-02 21:26:49 - Tradução aplicada com sucesso!
+[0;32m[INFO][0m 2026-02-02 21:26:49 - Estatísticas da tradução:
+  [0;32mTraduções disponíveis:[0m 7912
+  [1;33mStrings pendentes:[0m 353
+[0;32m[INFO][0m 2026-02-02 21:26:49 - Processo concluído!

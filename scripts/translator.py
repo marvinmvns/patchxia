@@ -224,16 +224,18 @@ class FileProcessor:
 
         # Padrões para capturar strings com chinês
         patterns = [
-            # Strings entre aspas duplas
+            # Strings entre aspas duplas (sem quebra de linha)
             (r'"([^"\n]*[\u4e00-\u9fff\u3400-\u4dbf][^"\n]*)"', 1),
-            # Strings entre aspas simples
+            # Strings entre aspas simples (sem quebra de linha)
             (r"'([^'\n]*[\u4e00-\u9fff\u3400-\u4dbf][^'\n]*)'", 1),
+            # Backticks (template literals JS)
+            (r'`([^`]*[\u4e00-\u9fff\u3400-\u4dbf][^`]*)`', 1),
             # Texto entre tags HTML/Vue
             (r'>([^<\n]*[\u4e00-\u9fff\u3400-\u4dbf][^<\n]*)<', 1),
             # Comentários Python/Shell com chinês
             (r'#\s*([^\n]*[\u4e00-\u9fff\u3400-\u4dbf][^\n]*)', 1),
             # Comentários HTML
-            (r'<!--\s*([^>]*[\u4e00-\u9fff\u3400-\u4dbf][^>]*)\s*-->', 1),
+            (r'<!--\s*((?:(?!-->).)*[\u4e00-\u9fff\u3400-\u4dbf](?:(?!-->).)*)\s*-->', 1),
         ]
 
         for pattern, group in patterns:
