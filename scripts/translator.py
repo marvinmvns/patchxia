@@ -205,7 +205,7 @@ class FileProcessor:
 
     def should_skip(self, text: str) -> bool:
         text = text.strip()
-        if len(text) < 2 or len(text) > 200:
+        if len(text) < 1 or len(text) > 5000:
             return True
         for pattern in self.SKIP_PATTERNS:
             if re.match(pattern, text):
@@ -224,9 +224,11 @@ class FileProcessor:
 
         # Padrões para capturar strings com chinês
         patterns = [
-            # Strings entre aspas duplas (sem quebra de linha)
+            # Triple quotes (multiline) - Corrigido para não "vazar" entre docstrings
+            (r'"""((?:(?!""").)*?[\u4e00-\u9fff\u3400-\u4dbf](?:(?!""").)*?)"""', 1),
+            (r"'''((?:(?!''').)*?[\u4e00-\u9fff\u3400-\u4dbf](?:(?!''').)*?)'''", 1),
+            # Single quoted strings (no newlines)
             (r'"([^"\n]*[\u4e00-\u9fff\u3400-\u4dbf][^"\n]*)"', 1),
-            # Strings entre aspas simples (sem quebra de linha)
             (r"'([^'\n]*[\u4e00-\u9fff\u3400-\u4dbf][^'\n]*)'", 1),
             # Backticks (template literals JS)
             (r'`([^`]*[\u4e00-\u9fff\u3400-\u4dbf][^`]*)`', 1),
@@ -236,6 +238,13 @@ class FileProcessor:
             (r'#\s*([^\n]*[\u4e00-\u9fff\u3400-\u4dbf][^\n]*)', 1),
             # Comentários HTML
             (r'<!--\s*((?:(?!-->).)*[\u4e00-\u9fff\u3400-\u4dbf](?:(?!-->).)*)\s*-->', 1),
+            # YAML: valores sem aspas em itens de lista ("  - valor chinês")
+            (r'(?:^|\n)([ \t]*-[ \t]+)([\u4e00-\u9fff\u3400-\u4dbf][^\n#]*)', 2),
+            # YAML: valores sem aspas em chaves ("  chave: valor chinês")
+            # Apenas captura o valor (grupo 2), não a chave
+            (r'(?:^|\n)([ \t]*[\w._-]+:[ \t]+)([\u4e00-\u9fff\u3400-\u4dbf][^\n#]*)', 2),
+            # Shell: echo/whiptail com strings chinesas não-entoquotadas
+            (r'(?:echo|msgbox)\s+"([^"]*[\u4e00-\u9fff\u3400-\u4dbf][^"]*)"', 1),
         ]
 
         for pattern, group in patterns:
@@ -248,17 +257,50 @@ class FileProcessor:
 
         # Remover duplicatas mantendo primeira ocorrência
         seen_texts = set()
-        unique_matches = []
+        candidates = []
         for start, end, text in sorted(matches, key=lambda x: x[0]):
             if text not in seen_texts:
                 seen_texts.add(text)
+                candidates.append((start, end, text))
+
+        # Filtrar sobreposições (manter o match mais externo/maior)
+        # Ordenar por início
+        candidates.sort(key=lambda x: x[0])
+        
+        unique_matches = []
+        last_end = -1
+        
+        for start, end, text in candidates:
+            # Se o match atual começa depois do último terminar, não há sobreposição
+            if start >= last_end:
                 unique_matches.append((start, end, text))
+                last_end = end
+            else:
+                # Há sobreposição. Como ordenamos por início, e strings aninhadas começam depois (ou igual),
+                # o 'candidiate' atual é interno ou sobreposto ao anterior.
+                # Mantemos o 'last' (o anterior) que é o externo.
+                # Nota: Em regex de strings, overlaps parciais não acontecem, apenas aninhamento.
+                # O regex externo captura "...", o interno captura '...' dentro dele.
+                # O externo começa antes (ou igual) e termina depois (ou igual).
+                # Então descartamos o atual.
+                continue
 
         return unique_matches
 
+    def verify_interpolation(self, original: str, translated: str) -> bool:
+        """Verifica se a interpolação de variáveis (f-strings) foi preservada corretamente."""
+        # Regex simplificado para capturar conteúdo entre {} que não seja {{ ou }}
+        # Nota: Não suporta aninhamento complexo, mas serve para a maioria dos casos simples
+        pattern = re.compile(r'(?<!{){([^{}]+)}(?!})')
+        
+        orig_vars = sorted([m.group(1).replace(" ", "") for m in pattern.finditer(original)])
+        trans_vars = sorted([m.group(1).replace(" ", "") for m in pattern.finditer(translated)])
+        
+        return orig_vars == trans_vars
+
     def process_file(self, file_path: str, dry_run: bool = False, use_auto_translate: bool = False) -> Tuple[str, List[dict]]:
         """Processa um arquivo e aplica traduções de forma segura."""
-
+        
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
 
@@ -276,14 +318,36 @@ class FileProcessor:
             line_num = content[:start].count('\n') + 1
             context = lines[line_num - 1].strip()[:80] if line_num <= len(lines) else ""
 
+            # Verificar contexto das aspas para escapar corretamente
+            quote_char = None
+            if start > 0:
+                char_before = content[start-1]
+                if char_before in ['"', "'", '`']:
+                    quote_char = char_before
+                elif start >= 3 and content[start-3:start] in ['"""', "'''"]:
+                    quote_char = content[start-3:start]
+
             # Buscar tradução existente
             translation = self.db.get_translation(text)
 
             if translation:
-                replacements.append((start, end, text, translation))
+                # Verificar se interpolação foi preservada
+                if not self.verify_interpolation(text, translation):
+                    print(f"    [WARN] Ignorando tradução insegura (interpolação quebrada): {text[:30]}...")
+                    self._add_pending(text, file_path, line_num, context)
+                    continue
+
+                # Escapar aspas na tradução se necessário
+                final_translation = translation
+                if quote_char:
+                    if len(quote_char) == 1: # Aspas simples/duplas normais
+                        final_translation = final_translation.replace(quote_char, f"\\{quote_char}")
+                    # Para triple quotes, geralmente não precisa escapar a menos que contenha a própria triple quote
+
+                replacements.append((start, end, text, final_translation))
                 changes.append({
                     'original': text,
-                    'translated': translation,
+                    'translated': final_translation,
                     'line': line_num,
                     'source': 'database'
                 })
@@ -292,9 +356,20 @@ class FileProcessor:
                 translated, translator_name = self.translator.translate(text, 'zh')
 
                 if translated and translator_name != 'failed':
+                    # Verificar se interpolação foi preservada
+                    if not self.verify_interpolation(text, translated):
+                        print(f"    [WARN] Ignorando tradução insegura (interpolação quebrada): {text[:30]}...")
+                        self._add_pending(text, file_path, line_num, context)
+                        continue
+
+                    # Escapar aspas na tradução automática também
+                    final_translated = translated
+                    if quote_char and len(quote_char) == 1:
+                        final_translated = final_translated.replace(quote_char, f"\\{quote_char}")
+
                     entry = TranslationEntry(
                         original=text,
-                        translated=translated,
+                        translated=translated, # Salva no banco SEM escape
                         source_lang='zh',
                         translator=translator_name,
                         file_path=file_path,
@@ -304,15 +379,15 @@ class FileProcessor:
                         verified=False
                     )
                     self.db.add_translation(entry)
-                    replacements.append((start, end, text, translated))
+                    replacements.append((start, end, text, final_translated))
                     changes.append({
                         'original': text,
-                        'translated': translated,
+                        'translated': final_translated,
                         'line': line_num,
                         'source': translator_name
                     })
                     self.stats['strings_translated'] += 1
-                    print(f"    [AUTO] {text[:30]}... -> {translated[:30]}...")
+                    print(f"    [AUTO] {text[:30]}... -> {final_translated[:30]}...")
                 else:
                     self._add_pending(text, file_path, line_num, context)
             else:
@@ -351,10 +426,16 @@ class PatchTranslator:
         self.processor = FileProcessor(self.db, self.translator)
 
     def find_translatable_files(self) -> List[Path]:
-        extensions = ['.py', '.js', '.vue', '.html', '.json', '.yaml', '.yml', '.sh']
+        extensions = ['.py', '.js', '.vue', '.html', '.json', '.yaml', '.yml', '.sh', '.md', '.txt']
+        # Diretórios a ignorar completamente
+        ignore_dirs = {'node_modules', '.git', '__pycache__', 'mysql', '.venv', 'venv'}
         files = []
         for ext in extensions:
-            files.extend(self.project_path.glob(f"**/*{ext}"))
+            for f in self.project_path.glob(f"**/*{ext}"):
+                # Filtrar diretórios ignorados no caminho
+                if any(ign in f.parts for ign in ignore_dirs):
+                    continue
+                files.append(f)
         return sorted(files, key=lambda f: str(f))
 
     def run(self, incremental: bool = True, dry_run: bool = False, use_auto_translate: bool = False):

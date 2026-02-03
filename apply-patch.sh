@@ -44,6 +44,13 @@ DRY_RUN=false
 USE_LLM=false
 VALIDATE_ONLY=false
 ROLLBACK=false
+DOCKER_MODE=false
+EXTRACT_ONLY=false
+
+# Containers do xiaozhi (nomes padrão do docker-compose_all.yml)
+SERVER_CONTAINER="xiaozhi-esp32-server"
+WEB_CONTAINER="xiaozhi-esp32-server-web"
+DB_CONTAINER="xiaozhi-esp32-server-db"
 
 # Função de log
 log() {
@@ -87,15 +94,18 @@ show_help() {
     echo "  --full           Retraduz todas as strings"
     echo "  --dry-run        Mostra o que seria traduzido sem aplicar"
     echo "  --rollback       Restaura o backup mais recente"
-    echo "  --use-llm        Usa LLM para traduzir strings não encontradas"
+    echo "  --use-llm        Usa APIs para traduzir strings não encontradas"
     echo "  --validate       Apenas valida o código após patch"
+    echo "  --docker         Modo Docker: traduz arquivos + banco + web assets"
+    echo "  --extract        Apenas analisa o que precisa traduzir (sem aplicar)"
     echo "  --help, -h       Mostra esta ajuda"
     echo ""
     echo "Exemplos:"
-    echo "  $0 ./xiaozhi-esp32-server                    # Aplica tradução incremental"
-    echo "  $0 ./xiaozhi-esp32-server --dry-run          # Simula tradução"
-    echo "  $0 ./xiaozhi-esp32-server --use-llm          # Usa LLM para novas strings"
-    echo "  $0 ./xiaozhi-esp32-server --rollback         # Restaura backup"
+    echo "  $0 ./xiaozhi-esp32-server                         # Patch de arquivos"
+    echo "  $0 ./xiaozhi-esp32-server --docker --use-llm      # Modo Docker completo com API"
+    echo "  $0 --docker --dry-run                             # Docker dry-run (sem projeto)"
+    echo "  $0 --extract                                      # Análise de cobertura"
+    echo "  $0 ./xiaozhi-esp32-server --rollback              # Restaurar backup"
     echo ""
 }
 
@@ -335,6 +345,84 @@ show_stats() {
     fi
 }
 
+# ─── Modo Docker ──────────────────────────────────────────────
+
+# Verificar se os containers estão rodando
+check_containers() {
+    log INFO "Verificando containers..."
+
+    local all_ok=true
+    for c in "$SERVER_CONTAINER" "$WEB_CONTAINER" "$DB_CONTAINER"; do
+        if docker inspect --format '{{.State.Running}}' "$c" 2>/dev/null | grep -q "true"; then
+            log INFO "  [OK] $c"
+        else
+            log WARN "  [--] $c não está rodando"
+            all_ok=false
+        fi
+    done
+
+    if [ "$all_ok" = false ]; then
+        log WARN "Alguns containers não estão rodando."
+        log INFO "Inicie com: docker compose -f docker-compose_all.yml up -d"
+        return 1
+    fi
+    return 0
+}
+
+# Modo Docker completo: extrai + traduz arquivos + banco + web assets
+run_docker_mode() {
+    local project_path=$1
+
+    log INFO "═══════════════════════════════════════════════════"
+    log INFO " MODO DOCKER — Tradução completa via containers"
+    log INFO "═══════════════════════════════════════════════════"
+
+    # 1. Verificar containers
+    check_containers || {
+        log WARN "Continuando mesmo com containers ausentes..."
+    }
+
+    # 2. Modo extração only (análise)
+    if [ "$EXTRACT_ONLY" = true ]; then
+        log INFO "Modo EXTRAÇÃO — apenas análise, sem aplicar"
+        python3 "${SCRIPTS_DIR}/extract_docker.py"
+        exit 0
+    fi
+
+    # 3. Patch dos arquivos fonte (comportamento original)
+    if [ -n "$project_path" ]; then
+        log INFO "── Fase 1: Patch de arquivos fonte ──"
+        apply_translations "$project_path"
+    fi
+
+    # 4. Patch do banco de dados MySQL
+    log INFO ""
+    log INFO "── Fase 2: Patch do banco de dados ──"
+    local db_args=""
+    [ "$DRY_RUN" = true ] && db_args="$db_args --dry-run"
+    [ "$USE_LLM" = false ] && db_args="$db_args --no-api"
+    python3 "${SCRIPTS_DIR}/patch_database.py" $db_args
+
+    # 5. Patch dos assets web compilados
+    log INFO ""
+    log INFO "── Fase 3: Patch dos assets web ──"
+    local web_args=""
+    [ "$DRY_RUN" = true ] && web_args="$web_args --dry-run"
+    [ "$USE_LLM" = false ] && web_args="$web_args --no-api"
+    python3 "${SCRIPTS_DIR}/patch_web_assets.py" $web_args
+
+    # 6. Validar código fonte (se projeto disponível)
+    if [ -n "$project_path" ] && [ "$DRY_RUN" = false ]; then
+        log INFO ""
+        log INFO "── Fase 4: Validação ──"
+        validate_code "$project_path"
+    fi
+
+    # 7. Estatísticas finais
+    show_stats
+    log INFO "Modo Docker concluído!"
+}
+
 # Main
 main() {
     show_banner
@@ -368,6 +456,15 @@ main() {
                 ROLLBACK=true
                 shift
                 ;;
+            --docker)
+                DOCKER_MODE=true
+                shift
+                ;;
+            --extract)
+                EXTRACT_ONLY=true
+                DOCKER_MODE=true
+                shift
+                ;;
             --help|-h)
                 show_help
                 exit 0
@@ -383,6 +480,31 @@ main() {
                 ;;
         esac
     done
+
+    # ── Modo Docker (sem projeto obrigatório para DB/web) ──
+    if [ "$DOCKER_MODE" = true ]; then
+        check_dependencies
+
+        # Resolver caminho do projeto se fornecido
+        local resolved_path=""
+        if [ -n "$project_path" ]; then
+            resolved_path="$(cd "$project_path" 2>/dev/null && pwd)" || {
+                log WARN "Caminho do projeto inválido, continuando sem patch de arquivos"
+                resolved_path=""
+            }
+            if [ -n "$resolved_path" ]; then
+                verify_project "$resolved_path"
+                if [ "$DRY_RUN" = false ]; then
+                    create_backup "$resolved_path"
+                fi
+            fi
+        fi
+
+        run_docker_mode "$resolved_path"
+        exit 0
+    fi
+
+    # ── Modo clássico (patch de arquivos apenas) ──
 
     # Verificar caminho do projeto
     if [ -z "$project_path" ]; then
