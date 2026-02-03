@@ -12,7 +12,7 @@ Tabelas traduzidas:
 
 NÃO traduzido (intencionalmente):
   ai_agent_template.system_prompt  — prompt do LLM, manter chinês
-  sys_params end_prompt.prompt     — prompt interno do LLM
+  sys_params end_prompt.prompt     — prompt de despedida (traduzido)
   sys_params xiaozhi / system-web.menu — JSON estrutural
   Campos com chaves / tokens / URLs
 
@@ -54,7 +54,6 @@ CHINESE = re.compile(r'[\u4e00-\u9fff]')
 
 # ─── Campos cujo param_value NÃO deve ser traduzido ─────────
 SKIP_VALUE_PARAMS = {
-    "end_prompt.prompt",
     "server.secret", "server.public_key", "server.private_key",
     "log.log_format", "log.log_format_file",
     "xiaozhi", "system-web.menu",

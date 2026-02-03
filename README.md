@@ -68,23 +68,34 @@ chmod +x apply-patch.sh
 | `--rollback` | Restaura o backup mais recente |
 | `--use-llm` | Usa servicos de traducao para strings novas |
 | `--validate` | Apenas valida o codigo apos patch |
+| `--docker` | Aplica patch em containers Docker (fonte + DB + web) |
+| `--extract` | Apenas analisa o que precisa de traducao (sem escrever) |
 | `--help` | Mostra ajuda |
 
 ## Estrutura do Projeto
 
 ```
 patchxia/
-├── apply-patch.sh          # Script principal
+├── apply-patch.sh                  # CLI principal (backup -> traduz -> valida)
+├── clean_translations.py          # Auditoria de qualidade em translations.json
+├── revert_broken.py               # Reverte arquivos com erro de sintaxe (git checkout)
 ├── scripts/
-│   └── translator.py       # Motor de traducao Python
+│   ├── translator.py              # Motor de traducao (extração, substituição, APIs)
+│   ├── translate_pending.py       # Traduz pending.json via APIs (4 workers)
+│   ├── translate_pending_group.py # Traduz pending.json (single-thread)
+│   ├── translate_md.py            # Traducao de arquivos Markdown
+│   ├── clean_pending_list.py      # Remove padroes de codigo de pending.json
+│   ├── extract_docker.py          # Escana containers para strings nao traduzidas
+│   ├── patch_database.py          # Aplica patch nas tabelas MySQL via docker exec
+│   └── patch_web_assets.py        # Aplica patch nos bundles JS do container web
 ├── translations/
-│   ├── translations.json   # Banco de traducoes verificadas
-│   └── pending.json        # Strings pendentes de traducao
-├── backups/                # Backups automaticos
+│   ├── translations.json          # Banco de traducoes verificadas
+│   └── pending.json               # Strings pendentes de traducao
+├── backups/                       # Backups automaticos (timestamp)
 ├── tests/
-│   └── test_translation.sh # Script de teste
-├── config/                 # Configuracoes
-└── logs/                   # Logs de execucao
+│   └── test_translation.sh        # Script de teste (projeto isolado)
+├── config/                        # Configuracoes
+└── logs/                          # Logs de execucao
 ```
 
 ## Fluxo de Trabalho Recomendado
@@ -103,6 +114,63 @@ patchxia/
 2. Execute o patch novamente (modo incremental)
 3. Novas strings serao adicionadas a `pending.json`
 4. Revise e aprove as novas traducoes
+
+## Gerenciar Strings Pendentes
+
+Strings não encontradas no banco geram entradas em `pending.json`. Para processá-las:
+
+```bash
+# Traduz pendentes via APIs (MyMemory / Google)
+python3 scripts/translate_pending.py
+
+# Exporta pendentes para CSV (revisao manual)
+python3 scripts/translate_pending.py --export-csv
+
+# Importa CSV revisado de volta ao pending.json
+python3 scripts/translate_pending.py --import-csv pending_translated.csv
+```
+
+## Modo Docker
+
+Aplica patch diretamente em containers em execucao (banco MySQL + JS compilados + fonte). Requer os 4 containers do xiaozhi rodando.
+
+```bash
+# Analise: o que ainda precisa de traducao
+python3 scripts/extract_docker.py
+python3 scripts/extract_docker.py --save       # salva em extractions/summary.json
+python3 scripts/extract_docker.py --db-only    # apenas tabelas MySQL
+
+# Patch no MySQL (sys_params, sys_dict_data, ai_model_provider, etc.)
+python3 scripts/patch_database.py              # aplica + traduz via API
+python3 scripts/patch_database.py --dry-run    # preview
+python3 scripts/patch_database.py --no-api     # sem chamadas de API
+
+# Patch nos bundles JS do container web
+python3 scripts/patch_web_assets.py            # aplica + traduz via API
+python3 scripts/patch_web_assets.py --dry-run  # preview
+python3 scripts/patch_web_assets.py --no-api   # sem chamadas de API
+
+# Tudo em um comando via apply-patch.sh
+./apply-patch.sh --docker                      # fonte + DB + web
+./apply-patch.sh --docker --use-llm            # com fallback LLM para fonte
+./apply-patch.sh --docker --dry-run            # preview geral
+./apply-patch.sh --extract                     # apenas analise
+```
+
+**Nota:** patches nos bundles JS são efêmeros — se o container web for recriado (ex: `docker pull` + restart) é necessário reexecutar `patch_web_assets.py`. Updates no MySQL são duráveis.
+
+## Manutenção
+
+```bash
+# Remove padroes de codigo/lixo de pending.json
+python3 scripts/clean_pending_list.py
+
+# Auditoria de qualidade em translations.json
+python3 clean_translations.py
+
+# Reverte arquivos do xiaozhi que falharam na validacao de sintaxe
+python3 revert_broken.py
+```
 
 ## Adicionar Traducoes Manuais
 

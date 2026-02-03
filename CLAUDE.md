@@ -78,7 +78,7 @@ python3 scripts/patch_web_assets.py --no-api    # use local DB only
 | Layer | Script | Tables / Files | Intentionally skipped |
 |---|---|---|---|
 | Source files | `translator.py` via `apply-patch.sh` | `.py .yaml .yml .json .sh .md .txt` in the project tree | `node_modules`, `.git`, `__pycache__` |
-| MySQL | `patch_database.py` | `sys_params`, `sys_dict_data`, `ai_model_provider`, `ai_model_config`, `ai_agent_template` | `ai_agent_template.system_prompt` (LLM prompt), `end_prompt.prompt`, keys/secrets/URLs, `xiaozhi` & `system-web.menu` JSON configs |
+| MySQL | `patch_database.py` | `sys_params`, `sys_dict_data`, `ai_model_provider`, `ai_model_config`, `ai_agent_template` | `ai_agent_template.system_prompt` (LLM prompt), keys/secrets/URLs, `xiaozhi` & `system-web.menu` JSON configs |
 | Web JS | `patch_web_assets.py` | All `*.js` under `/usr/share/nginx/html` in the web container | URLs, file paths, code fragments, strings < 2 or > 500 chars |
 
 ### MySQL 9.x quirks
