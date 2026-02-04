@@ -91,14 +91,18 @@ def translate_google(text: str, source_lang: str = 'zh') -> str:
     except urllib.error.HTTPError as e:
         if e.code == 429:
             return "ERR_429"
-        print(f"  [Google HTTP erro: {e}]")
+        try:
+            body = e.read().decode('utf-8', errors='replace')
+        except Exception:
+            body = ''
+        print(f"  [Google HTTP erro: {e.code} — {body[:200]}]")
     except Exception as e:
         print(f"  [Google erro: {e}]")
     return ""
 
 
 # Circuit breaker for MyMemory
-mymemory_enabled = True
+mymemory_enabled = False  # Desabilitado — usar apenas Google
 mymemory_fail_count = 0
 
 def translate_text(text: str, source_lang: str = 'zh') -> tuple:
@@ -121,7 +125,7 @@ def translate_text(text: str, source_lang: str = 'zh') -> tuple:
                 mymemory_enabled = False
     
     # Google Strategy: Direct attempt
-    time.sleep(0.2)
+    time.sleep(0.35)
     result = translate_google(text, source_lang)
     
     if result and result != "ERR_429":
@@ -141,14 +145,17 @@ import threading
 rate_limit_lock = threading.Lock()
 consecutive_429_count = 0
 
+MAX_TRANSLATE_LEN = 500  # limite seguro para o endpoint gratuito do Google
+
 def translate_worker(args):
     global consecutive_429_count
     hash_key, entry, review = args
     original = entry['original']
     source_lang = entry.get('source_lang', 'zh')
-    
-    # Removed global "Cool Down" sleep to satisfy user request for SPEED.
-    # We accept some failures rather than pausing everything.
+
+    if len(original) > MAX_TRANSLATE_LEN:
+        print(f"  [PULAR] hash={hash_key} — string com {len(original)} chars (máximo {MAX_TRANSLATE_LEN}). Use --export para tradução manual.")
+        return hash_key, "ERR_TOO_LONG"
 
     translated, service = translate_text(original, source_lang)
     
@@ -204,10 +211,11 @@ def translate_pending(limit: int = None, review: bool = False):
 
     translated_count = 0
     failed_count = 0
+    skipped_too_long = 0
     new_translations = {}
     
     # Use ThreadPoolExecutor
-    max_workers = 4  # Reduced to avoid 429s
+    max_workers = 2  # Google-only: 2 workers para evitar 429
     print(f"Iniciando tradução com {max_workers} threads...")
     
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -227,12 +235,16 @@ def translate_pending(limit: int = None, review: bool = False):
             if result:
                 hash_key, trans_entry = result
                 
-                # Check for 429 specific return
+                # Check for error returns
                 if trans_entry == "ERR_429":
                     failed_count += 1
                     if done % 10 == 0:
                         print(f"[{done}/{total}] ⚠️  Rate Limit (429) - Pausando...")
                         time.sleep(5)
+                    continue
+
+                if trans_entry == "ERR_TOO_LONG":
+                    skipped_too_long += 1
                     continue
 
                 new_translations[hash_key] = trans_entry
@@ -292,6 +304,7 @@ def translate_pending(limit: int = None, review: bool = False):
     print(f"{'='*60}")
     print(f"Traduzidas: {translated_count}")
     print(f"Falharam:   {failed_count}")
+    print(f"Puladas (muito longas): {skipped_too_long}")
     print(f"Total no banco: {len(translations)}")
     print(f"Pendentes restantes: {len(pending)}")
     print(f"{'='*60}\n")
