@@ -1,16 +1,106 @@
 {
   "version": "2.0.0",
-  "last_updated": "2026-02-03T21:42:09.618016",
-  "total_pending": 1,
+  "last_updated": "2026-02-04T21:37:59.457136",
+  "total_pending": 10,
   "pending": {
-    "1c4a127085c2": {
-      "original": "| 测试ASR(语音识别)、LLM(大模型)、VLLM(视觉模型)、TTS(语音合成)三个核心模块的响应速度 |\n\n> 💡 提示：测试模型速度时，只会测试配置了密钥的模型。\n\n---\n## 功能清单 ✨\n### 已实现 ✅\n![请参考-全模块安装架构图](docs/images/deploy2.png)\n| 功能模块 | 描述 |\n|:---:|:---|\n| 核心架构 | 基于[MQTT+UDP网关](https://github.com/xinnan-tech/xiaozhi-esp32-server/blob/main/docs/mqtt-gateway-integration.md)、WebSocket、HTTP服务器，提供完整的控制台管理和认证系统 |\n| 语音交互 | 支持流式ASR(语音识别)、流式TTS(语音合成)、VAD(语音活动检测)，支持多语言识别和语音处理 |\n| 声纹识别 | 支持多用户声纹注册、管理和识别，与ASR并行处理，实时识别说话人身份并传递给LLM进行个性化回应 |\n| 智能对话 | 支持多种LLM(大语言模型)，实现智能对话 |\n| 视觉感知 | 支持多种VLLM(视觉大模型)，实现多模态交互 |\n| 意图识别 | 支持外挂的大模型意图识别、大模型自主函数调用，提供插件化意图处理机制 |\n| 记忆系统 | 支持本地短期记忆、mem0ai接口记忆，具备记忆总结功能 |\n| 知识库 | 支持RAGFlow知识库，让大模型判断需要调度知识库后再回答 |\n| 工具调用 | 支持客户端IOT协议、客户MCP协议、服务端MCP协议、MCP接入点协议、自定义工具函数 |\n| 指令下发 | 依托MQTT协议，支持从智控台将MCP指令下发到ESP32设备 |\n| 管理后台 | 提供Web管理界面，支持用户管理、系统配置和设备管理；界面支持中文简体、中文繁体、英文显示 |\n| 测试工具 | 提供性能测试工具、视觉模型测试工具和音频交互测试工具 |\n| 部署支持 | 支持Docker部署和本地部署，提供完整的配置文件管理 |\n| 插件系统 | 支持功能插件扩展、自定义插件开发和插件热加载 |\n\n### 正在开发 🚧\n\n想了解具体开发计划进度，[请点击这里](https://github.com/users/xinnan-tech/projects/3)。常见问题及相关教程，可参考[这个链接](./docs/FAQ.md)\n\n如果你是一名软件开发者，这里有一份[《致开发者的公开信》](docs/contributor_open_letter.md)，欢迎加入！\n\n---\n\n## 产品生态 👬\n小智是一个生态，当你使用这个产品时，也可以看看其他在这个生态圈的[优秀项目](https://github.com/78/xiaozhi-esp32/blob/main/README_zh.md#%E7%9B%B8%E5%85%B3%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE)\n\n---\n\n## 本项目支持的平台/组件列表 📋\n### LLM 语言模型\n\n| 使用方式 | 支持平台 | 免费平台 |\n|:---:|:---:|:---:|\n| openai 接口调用 | 阿里百炼、火山引擎、DeepSeek、智谱、Gemini、科大讯飞 | 智谱、Gemini |\n| ollama 接口调用 | Ollama | - |\n| dify 接口调用 | Dify | - |\n| fastgpt 接口调用 | Fastgpt | - |\n| coze 接口调用 | Coze | - |\n| xinference 接口调用 | Xinference | - |\n| homeassistant 接口调用 | HomeAssistant | - |\n\n实际上，任何支持 openai 接口调用的 LLM 均可接入使用。\n\n---\n\n### VLLM 视觉模型\n\n| 使用方式 | 支持平台 | 免费平台 |\n|:---:|:---:|:---:|\n| openai 接口调用 | 阿里百炼、智谱ChatGLMVLLM | 智谱ChatGLMVLLM |\n\n实际上，任何支持 openai 接口调用的 VLLM 均可接入使用。\n\n---\n\n### TTS 语音合成\n\n| 使用方式 | 支持平台 | 免费平台 |\n|:---:|:---:|:---:|\n| 接口调用 | EdgeTTS、科大讯飞、火山引擎、腾讯云、阿里云及百炼、CosyVoiceSiliconflow、TTS302AI、CozeCnTTS、GizwitsTTS、ACGNTTS、OpenAITTS、灵犀流式TTS、MinimaxTTS | 灵犀流式TTS、EdgeTTS、CosyVoiceSiliconflow(部分) |\n| 本地服务 | FishSpeech、GPT_SOVITS_V2、GPT_SOVITS_V3、Index-TTS、PaddleSpeech | Index-TTS、PaddleSpeech、FishSpeech、GPT_SOVITS_V2、GPT_SOVITS_V3 |\n\n---\n\n### VAD 语音活动检测\n\n| 类型  |   平台名称    | 使用方式 | 收费模式 | 备注 |\n|:---:|:---------:|:----:|:----:|:--:|\n| VAD | SileroVAD | 本地使用 |  免费  |    |\n\n---\n\n### ASR 语音识别\n\n| 使用方式 | 支持平台 | 免费平台 |\n|:---:|:---:|:---:|\n| 本地使用 | FunASR、SherpaASR | FunASR、SherpaASR |\n| 接口调用 | FunASRServer、火山引擎、科大讯飞、腾讯云、阿里云、百度云、OpenAI ASR | FunASRServer |\n\n---\n\n### Voiceprint 声纹识别\n\n| 使用方式 | 支持平台 | 免费平台 |\n|:---:|:---:|:---:|\n| 本地使用 | 3D-Speaker | 3D-Speaker |\n\n---\n\n### Memory 记忆存储\n\n|   类型   |      平台名称       | 使用方式 |   收费模式    | 备注 |\n|:------:|:---------------:|:----:|:---------:|:--:|\n| Memory |     mem0ai      | 接口调用 | 1000次/月额度 |    |\n| Memory | mem_local_short | 本地总结 |    免费     |    |\n| Memory |     nomem       | 无记忆模式 |    免费     |    |\n\n---\n\n### Intent 意图识别\n\n|   类型   |     平台名称      | 使用方式 |  收费模式   |          备注           |\n|:------:|:-------------:|:----:|:-------:|:---------------------:|\n| Intent |  intent_llm   | 接口调用 | 根据LLM收费 |    通过大模型识别意图，通用性强     |\n| Intent | function_call | 接口调用 | 根据LLM收费 | 通过大模型函数调用完成意图，速度快，效果好 |\n| Intent |    nointent   | 无意图模式 |    免费     |    不进行意图识别，直接返回对话结果     |\n\n---\n\n### Rag 检索增强生成\n\n|   类型   |     平台名称      | 使用方式 |  收费模式   |          备注           |\n|:------:|:-------------:|:----:|:-------:|:---------------------:|\n| Rag |  ragflow   | 接口调用 | 根据切片、分词消耗的token收费 |    借助RagFlow的检索增强生成功能，提供更准确的对话回复     |\n\n---\n\n## 鸣谢 🙏\n\n| Logo | 项目/公司 | 说明 |\n|:---:|:---:|:---|\n| <img src=\"./docs/images/logo_bailing.png\" width=\"160\"> | [百聆语音对话机器人](https://github.com/wwbin2017/bailing) | 本项目受[百聆语音对话机器人](https://github.com/wwbin2017/bailing)启发，并在其基础上实现 |\n| <img src=\"./docs/images/logo_tenclass.png\" width=\"160\"> | [十方融海](https://www.tenclass.com/) | 感谢[十方融海](https://www.tenclass.com/)为小智生态制定了标准的通讯协议、多设备兼容性方案及高并发场景实践示范；为本项目提供了全链路技术文档支持 |\n| <img src=\"./docs/images/logo_xuanfeng.png\" width=\"160\"> | [玄凤科技](https://github.com/Eric0308) | 感谢[玄凤科技](https://github.com/Eric0308)贡献函数调用框架、MCP通信协议及插件化调用机制的实现代码，通过标准化的指令调度体系与动态扩展能力，显著提升了前端设备(IoT)的交互效率和功能延展性 |\n| <img src=\"./docs/images/logo_junsen.png\" width=\"160\"> | [huangjunsen](https://github.com/huangjunsen0406) | 感谢[huangjunsen](https://github.com/huangjunsen0406) 贡献",
+    "9eb89907152f": {
+      "original": "阿里百炼Paraformer实时语音识别配置说明：\n1. 登录阿里云百炼平台 https://bailian.console.aliyun.com/\n2. 创建API-KEY https://bailian.console.aliyun.com/#/api-key\n3. 支持模型：paraformer-realtime-v2(推荐)、paraformer-realtime-8k-v2、paraformer-realtime-v1、paraformer-realtime-8k-v1\n4. 功能特性：\n   - 多语言支持(中文含方言、英文、日语、韩语、德语、法语、俄语)\n   - 热词定制(vocabulary_id参数)，详细说明请参考：https://help.aliyun.com/zh/model-studio/custom-hot-words?\n   - 语义断句/VAD断句(semantic_punctuation_enabled参数)\n   - 自动标点符号、ITN、过滤语气词等\n5. 参数说明：\n   - model: 模型名称，推荐paraformer-realtime-v2\n   - sample_rate: 采样率(Hz)，v2支持任意采样率，v1仅支持16000，8k版本仅支持8000\n   - semantic_punctuation_enabled: false为VAD断句(低延迟)，true为语义断句(高准确)\n   - max_sentence_silence: VAD断句静音时长阈值(200-6000ms)\n",
       "source_lang": "zh",
-      "file_path": "/home/bigfriend/Documentos/bora/xiaozhi-esp32-server/README.md",
-      "line_number": 229,
-      "context": "| 模型响应测试工具 | main》xiaozhi-server》performance_tester.py | 执行 `python performance_",
-      "hash": "1c4a127085c2",
-      "date_found": "2026-02-03T20:59:24.753172",
+      "file_path": "db:ai_model_config:ASR_AliyunBLStream:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:ASR_AliyunBLStream:remark",
+      "hash": "9eb89907152f",
+      "date_found": "2026-02-04T21:36:43.154677",
+      "suggested_translation": ""
+    },
+    "10cb6c5e69ce": {
+      "original": "阿里云流式ASR配置说明：\n1. 阿里云ASR和阿里云(流式)ASR的区别是：阿里云ASR是一次性识别，阿里云(流式)ASR是实时流式识别\n2. 流式ASR具有更低的延迟和更好的实时性，适合语音交互场景\n3. 需要在阿里云智能语音交互控制台创建应用并获取认证信息\n4. 支持中文实时语音识别，支持标点符号预测和逆文本规范化\n5. 需要网络连接，输出文件保存在tmp/目录\n申请步骤：\n1. 访问 https://nls-portal.console.aliyun.com/ 开通智能语音交互服务\n2. 访问 https://nls-portal.console.aliyun.com/applist 创建项目并获取appkey\n3. 访问 https://nls-portal.console.aliyun.com/overview 获取临时token（或配置access_key_id和access_key_secret自动获取）\n4. 如需动态token管理，建议配置access_key_id和access_key_secret\n5. max_sentence_silence参数控制断句检测时间（毫秒），默认800ms\n如需了解更多参数配置，请参考：https://help.aliyun.com/zh/isi/developer-reference/real-time-speech-recognition\n",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:ASR_AliyunStreamASR:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:ASR_AliyunStreamASR:remark",
+      "hash": "10cb6c5e69ce",
+      "date_found": "2026-02-04T21:36:43.186651",
+      "suggested_translation": ""
+    },
+    "231d7e4b3a84": {
+      "original": "豆包ASR配置说明：\n1. 豆包ASR和豆包(流式)ASR的区别是：豆包ASR是按次收费，豆包(流式)ASR是按时收费\n2. 一般来说按次收费的更便宜，但是豆包(流式)ASR使用了大模型技术，效果更好\n3. 需要在火山引擎控制台创建应用并获取appid和access_token\n4. 支持中文语音识别\n5. 需要网络连接\n6. 输出文件保存在tmp/目录\n申请步骤：\n1. 访问 https://console.volcengine.com/speech/app\n2. 创建新应用\n3. 获取appid和access_token\n4. 填入配置文件中\n如需设置热词，请参考：https://www.volcengine.com/docs/6561/155738\n如开启多语种识别模式，请设置language当该键为空时，该模型支持中英文、上海话、闽南语，四川、陕西、粤语识别。其他语种请参考：https://www.volcengine.com/docs/6561/1354869\n",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:ASR_DoubaoStreamASR:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:ASR_DoubaoStreamASR:remark",
+      "hash": "231d7e4b3a84",
+      "date_found": "2026-02-04T21:36:48.069579",
+      "suggested_translation": ""
+    },
+    "a31300a8c8f7": {
+      "original": "独立部署FunASR，使用FunASR的API服务，只需要五句话\n第一句：mkdir -p ./funasr-runtime-resources/models\n第二句：sudo docker run -d -p 10096:10095 --privileged=true -v $PWD/funasr-runtime-resources/models:/workspace/models registry.cn-hangzhou.aliyuncs.com/funasr_repo/funasr:funasr-runtime-sdk-online-cpu-0.1.12\n上一句话执行后会进入到容器，继续第三句：cd FunASR/runtime\n不要退出容器，继续在容器中执行第四句：nohup bash run_server_2pass.sh --download-model-dir /workspace/models --vad-dir damo/speech_fsmn_vad_zh-cn-16k-common-onnx --model-dir iic/SenseVoiceSmall-onnx  --online-model-dir damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-online-onnx  --punc-dir damo/punc_ct-transformer_zh-cn-common-vad_realtime-vocab272727-onnx --lm-dir damo/speech_ngram_lm_zh-cn-ai-wesp-fst --itn-dir thuduj12/fst_itn_zh --hotword /workspace/models/hotwords.txt > log.txt 2>&1 &\n上一句话执行后会进入到容器，继续第五句：tail -f log.txt\n第五句话执行完后，会看到模型下载日志，下载完后就可以连接使用了\n以上是使用CPU推理，如果有GPU，详细参考：https://github.com/modelscope/FunASR/blob/main/runtime/docs/SDK_advanced_guide_online_zh.md",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:ASR_FunASRServer:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:ASR_FunASRServer:remark",
+      "hash": "a31300a8c8f7",
+      "date_found": "2026-02-04T21:36:48.162925",
+      "suggested_translation": ""
+    },
+    "572f8235c3ea": {
+      "original": "讯飞流式语音识别配置说明：\n1. 登录讯飞开放平台 https://www.xfyun.cn/\n2. 创建语音识别应用获取APPID、APISecret、APIKey\n3. 参数说明：\n   - app_id: 应用ID，在讯飞开放平台创建应用后获得\n   - api_key: API密钥，用于接口鉴权\n   - api_secret: API密钥，用于生成签名\n   - domain: 识别领域，默认slm（智能化语音转写）\n   - language: 识别语言，默认zh_cn（中文）\n   - accent: 方言类型，默认mandarin（普通话），支持cantonese（粤语）等\n   - dwa: 动态修正，默认wpgs（开启动态修正）\n   - output_dir: 音频文件输出目录，默认tmp/\n4. 支持实时流式识别，适用于实时语音交互场景\n5. 支持多种方言和语言识别\n",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:ASR_XunfeiStream:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:ASR_XunfeiStream:remark",
+      "hash": "572f8235c3ea",
+      "date_found": "2026-02-04T21:37:02.921422",
+      "suggested_translation": ""
+    },
+    "e1696a390c6e": {
+      "original": "讯飞星火认知大模型配置说明：\n1. 登录讯飞开放平台 https://www.xfyun.cn/，每一个模型对应每一个api_password,更改模型时需要查看对应模型的api_password\n2. 创建星火认知大模型应用获取API Password\n3. 参数说明：\n   - api_password: API Password，在讯飞开放平台创建应用后获得\n   - model_name: 模型名称，支持generalv3.5、generalv3等版本\n   - base_url: API地址，默认https://spark-api-open.xf-yun.com/v1\n   - temperature: 温度参数，控制生成随机性，范围0-1，默认0.5\n   - max_tokens: 最大输出token数，默认2048\n   - top_p: 核心采样参数，控制词汇多样性，默认1.0\n   - frequency_penalty: 频率惩罚，降低重复内容，默认0.0\n4. 每一个模型对应每一个api_password,更改模型时需要查看对应模型的api_password。\n",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:LLM_XunfeiSparkLLM:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:LLM_XunfeiSparkLLM:remark",
+      "hash": "e1696a390c6e",
+      "date_found": "2026-02-04T21:37:26.065108",
+      "suggested_translation": ""
+    },
+    "7051aa265bcd": {
+      "original": "阿里云流式TTS配置说明：\n1. 阿里云TTS和阿里云(流式)TTS的区别是：阿里云TTS是一次性合成，阿里云(流式)TTS是实时流式合成\n2. 流式TTS具有更低的延迟和更好的实时性，适合语音交互场景\n3. 需要在阿里云智能语音交互控制台创建应用并获取认证信息\n4. 支持CosyVoice大模型音色，音质更加自然\n5. 支持实时调节音量、语速、音调等参数\n申请步骤：\n1. 访问 https://nls-portal.console.aliyun.com/ 开通智能语音交互服务\n2. 访问 https://nls-portal.console.aliyun.com/applist 创建项目并获取appkey\n3. 访问 https://nls-portal.console.aliyun.com/overview 获取临时token（或配置access_key_id和access_key_secret自动获取）\n4. 如需动态token管理，建议配置access_key_id和access_key_secret\n5. 可选择北京、上海等不同地域的服务器以优化延迟\n6. voice参数支持CosyVoice大模型音色，如longxiaochun、longyueyue等\n如需了解更多参数配置，请参考：https://help.aliyun.com/zh/isi/developer-reference/real-time-speech-synthesis\n",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:TTS_AliyunStreamTTS:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:TTS_AliyunStreamTTS:remark",
+      "hash": "7051aa265bcd",
+      "date_found": "2026-02-04T21:37:34.454290",
+      "suggested_translation": ""
+    },
+    "0fe106df2d1a": {
+      "original": "火山引擎双向流式TTS配置说明：\n1. 访问 https://www.volcengine.com/ 注册并开通火山引擎账号\n2. 访问 https://console.volcengine.com/speech/service/10007 开通语音合成大模型，购买音色\n3. 在页面底部获取appid和access_token\n4. 资源ID固定为：volc.service_type.10029（大模型语音合成及混音）\n5. 链接复用：开启WebSocket连接复用，默认true减少链接损耗（注意：复用后设备处于聆听状态时空闲链接会占并发数）\n\n详细参数文档：https://www.volcengine.com/docs/6561/1329505\n【audio_params】音频输出配置 - 用户可自定义添加火山引擎支持的任何音频参数\n  - speech_rate: 语速(-50~100)，默认0\n  - loudness_rate: 音量(-50~100)，默认0\n  - emotion: 情感类型（仅部分音色支持），可选值：neutral、happy、sad、angry、fearful、disgusted、surprised\n  - emotion_scale: 情感强度(1~5)，默认4\n  示例：{\"speech_rate\": 10, \"loudness_rate\": 5, \"emotion\": \"happy\", \"emotion_scale\": 4}\n\n【additions】高级文本处理配置 - 用户可自定义添加火山引擎支持的任何高级参数\n  - post_process.pitch: 音高(-12~12)，默认0\n  - aigc_metadata: AIGC元数据配置\n  - cache_config: 缓存配置\n  示例：{\"post_process\": {\"pitch\": 2}, \"aigc_metadata\": {}, \"cache_config\": {}}\n\n【mix_speaker】混音控制配置 - 多音色混合（仅 TTS 1.0）\n  示例：\n    {\"speakers\": [\n      {\"source_speaker\": \"zh_male_bvlazysheep\",\"mix_factor\": 0.3}, \n      {\"source_speaker\": \"BV120_streaming\",\"mix_factor\": 0.3}, \n      {\"source_speaker\": \"zh_male_ahu_conversation_wvae_bigtts\",\"mix_factor\": 0.4}\n    ]}\n\n注意：\n- 多情感音色参数（emotion、emotion_scale）仅部分音色支持\n- 相关音色列表：https://www.volcengine.com/docs/6561/1257544\n- 用户可根据火山引擎API文档自行添加更多参数\n- 混音功能主要适用于豆包语音合成模型1.0的音色，使用时需要将req_params.speaker设置为custom_mix_bigtts\n",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:TTS_HuoshanDoubleStreamTTS:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:TTS_HuoshanDoubleStreamTTS:remark",
+      "hash": "0fe106df2d1a",
+      "date_found": "2026-02-04T21:37:44.543012",
+      "suggested_translation": ""
+    },
+    "dda0ee6e37d2": {
+      "original": "Index-TTS-vLLM流式TTS配置说明：\n1. Index-TTS-vLLM是基于Index-TTS项目的vLLM推理服务，提供流式语音合成功能\n2. 支持多种音色，音质自然，适合各种语音交互场景\n3. 需要先部署Index-TTS-vLLM服务，然后配置API地址\n4. 支持实时流式合成，具有较低的延迟\n5. 支持自定义音色，可在项目assets文件夹下注册新音色\n部署步骤：\n1. 克隆项目：git clone https://github.com/Ksuriuri/index-tts-vllm.git\n2. 安装依赖：pip install -r requirements.txt\n3. 启动服务：python app.py\n4. 服务默认运行在 http://127.0.0.1:11996\n5. 如需其他音色，可到项目assets文件夹下注册\n6. 支持多种音频格式：pcm、wav、mp3等\n如需了解更多配置，请参考：https://github.com/Ksuriuri/index-tts-vllm/blob/master/README.md\n",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:TTS_IndexStreamTTS:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:TTS_IndexStreamTTS:remark",
+      "hash": "dda0ee6e37d2",
+      "date_found": "2026-02-04T21:37:44.574012",
+      "suggested_translation": ""
+    },
+    "afe424394169": {
+      "original": "Minimax流式TTS配置说明：\n1. 需要先申请Minimax API Key\n2. 需要填写Group ID\n3. 支持多种音色设置和音频参数调整\n4. 支持实时流式合成，具有较低的延迟\n5. 支持自定义发音字典和音色权重\n6. 隐藏参数配置：声音设定(voice_setting)、发音字典(pronunciation_dict)、音色权重(timber_weights)\n   - 语速(speed): 范围[0.5,2]，默认1.0，取值越大语速越快\n   - 音量(vol): 范围(0,10]，默认1.0，取值越大音量越高\n   - 音调(pitch): 范围[-12,12]，默认0，取值需为整数\n   - 情绪(emotion): 控制合成语音的情绪，支持7种值：[\"happy\", \"sad\", \"angry\", \"fearful\", \"disgusted\", \"surprised\", \"calm\"]，该参数仅对 speech-2.5-hd-preview、speech-2.5-turbo-preview、speech-02-hd、speech-02-turbo、speech-01-turbo、speech-01-hd 生效\n   - timbre_weights与voice_id二选一必填\n   - voice_id(请求的音色id，须和weight参数同步填写)\n   - weight(权重，最多支持4种音色混合。范围[1,100])\n",
+      "source_lang": "zh",
+      "file_path": "db:ai_model_config:TTS_MinimaxStreamTTS:remark",
+      "line_number": 0,
+      "context": "db:ai_model_config:TTS_MinimaxStreamTTS:remark",
+      "hash": "afe424394169",
+      "date_found": "2026-02-04T21:37:46.344327",
       "suggested_translation": ""
     }
   }

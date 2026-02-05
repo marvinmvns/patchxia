@@ -9,6 +9,9 @@ tests/test_project/
 
 # Backups (managed locally)
 backups/
+extractions/
+translations/*.bak
+translations/*.backup_*
 
 # Logs
 logs/

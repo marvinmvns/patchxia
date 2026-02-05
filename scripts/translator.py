@@ -245,6 +245,28 @@ class FileProcessor:
             (r'(?:^|\n)([ \t]*[\w._-]+:[ \t]+)([\u4e00-\u9fff\u3400-\u4dbf][^\n#]*)', 2),
             # Shell: echo/whiptail com strings chinesas não-entoquotadas
             (r'(?:echo|msgbox)\s+"([^"]*[\u4e00-\u9fff\u3400-\u4dbf][^"]*)"', 1),
+
+            # === NOVOS PADRÕES ===
+
+            # SQL: comentários de linha única -- comentário
+            (r'--\s*([^\n]*[\u4e00-\u9fff\u3400-\u4dbf][^\n]*)', 1),
+            # SQL: comentários de bloco /* comentário */
+            (r'/\*\s*((?:(?!\*/).)*[\u4e00-\u9fff\u3400-\u4dbf](?:(?!\*/).)*)\s*\*/', 1),
+            # SQL: valores em INSERT/UPDATE (strings entre aspas simples)
+            # já coberto pelo padrão de aspas simples acima
+
+            # TypeScript/JavaScript: comentários de linha única // comentário
+            (r'//\s*([^\n]*[\u4e00-\u9fff\u3400-\u4dbf][^\n]*)', 1),
+
+            # XML: comentários <!-- comentário --> (já coberto por HTML acima)
+            # XML: atributos com chinês (ex: label="文本")
+            # já coberto pelos padrões de aspas
+
+            # CSS/SCSS: comentários /* comentário */ (já coberto por SQL block comments)
+            # CSS: comentários de linha // em SCSS
+            # já coberto por TypeScript comments
+
+            # Dockerfile: comentários # (já coberto por Python/Shell)
         ]
 
         for pattern, group in patterns:
@@ -426,9 +448,16 @@ class PatchTranslator:
         self.processor = FileProcessor(self.db, self.translator)
 
     def find_translatable_files(self) -> List[Path]:
-        extensions = ['.py', '.js', '.vue', '.html', '.json', '.yaml', '.yml', '.sh', '.md', '.txt']
+        extensions = [
+            '.py', '.js', '.vue', '.html', '.json', '.yaml', '.yml', '.sh', '.md', '.txt',
+            # Novos tipos adicionados
+            '.ts', '.tsx', '.jsx',  # TypeScript/React
+            '.sql',                  # SQL migrations
+            '.xml',                  # MyBatis mappers
+            '.scss', '.css',         # Stylesheets
+        ]
         # Diretórios a ignorar completamente
-        ignore_dirs = {'node_modules', '.git', '__pycache__', 'mysql', '.venv', 'venv'}
+        ignore_dirs = {'node_modules', '.git', '__pycache__', 'mysql', '.venv', 'venv', 'dist', 'build'}
         files = []
         for ext in extensions:
             for f in self.project_path.glob(f"**/*{ext}"):
@@ -436,6 +465,13 @@ class PatchTranslator:
                 if any(ign in f.parts for ign in ignore_dirs):
                     continue
                 files.append(f)
+
+        # Adicionar Dockerfiles (sem extensão)
+        for f in self.project_path.glob("**/Dockerfile*"):
+            if any(ign in f.parts for ign in ignore_dirs):
+                continue
+            files.append(f)
+
         return sorted(files, key=lambda f: str(f))
 
     def run(self, incremental: bool = True, dry_run: bool = False, use_auto_translate: bool = False):

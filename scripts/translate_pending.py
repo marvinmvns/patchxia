@@ -145,7 +145,7 @@ import threading
 rate_limit_lock = threading.Lock()
 consecutive_429_count = 0
 
-MAX_TRANSLATE_LEN = 500  # limite seguro para o endpoint gratuito do Google
+MAX_TRANSLATE_LEN = 1500  # aumentado para cobrir strings maiores (Google suporta até ~5000)
 
 def translate_worker(args):
     global consecutive_429_count

@@ -22,9 +22,81 @@ cd patchxia
 git clone https://github.com/xinnan-tech/xiaozhi-esp32-server.git ../xiaozhi-esp32-server
 
 # 3. Aplique o patch
-chmod +x apply-patch.sh
+chmod +x *.sh
 ./apply-patch.sh ../xiaozhi-esp32-server
+
+# ou — atualiza tudo de uma vez (fonte + banco + web + pendentes)
+./update-all.sh
+
+# ou — pipeline completo (inicia Docker + traduz + testa + finaliza)
+./full-pipeline.sh
 ```
+
+## Pipeline Completo (full-pipeline.sh)
+
+Script que executa **todo o ciclo de vida** do patch: inicia containers Docker, traduz, testa e finaliza. Ideal para automação e CI/CD.
+
+```bash
+./full-pipeline.sh                        # fluxo interativo completo
+./full-pipeline.sh --auto                 # modo automático (sem confirmações)
+./full-pipeline.sh --auto --stop-after    # CI/CD: automático e para containers ao final
+./full-pipeline.sh --dry-run              # preview sem alterar nada
+./full-pipeline.sh --no-api               # sem chamadas externas de API
+./full-pipeline.sh --keep-containers      # não pergunta para parar ao final
+./full-pipeline.sh --skip-clone           # não clona/atualiza projeto
+./full-pipeline.sh --project /outro/path  # projeto em outro lugar
+```
+
+### Fases do Pipeline
+
+| Fase | Etapas | Descrição |
+|------|--------|-----------|
+| **1. Preparação** | 1-4 | Verifica dependências, clone/update projeto, inicia Docker, aguarda containers |
+| **2. Tradução** | 5-13 | Executa `update-all.sh` (limpeza → backup → patch fonte/DB/web → pendentes) |
+| **3. Teste & Fim** | 14-16 | Testes de sanidade, relatório final, para containers (opcional) |
+
+### Detalhamento das Etapas
+
+| # | Etapa | O que faz |
+|---|-------|-----------|
+| 1 | Verificar dependências | Confirma python3, jq, docker, git |
+| 2 | Clone/atualização | Clona repositório ou faz git pull |
+| 3 | Iniciar containers | `docker compose up -d` no docker-compose_all.yml |
+| 4 | Aguardar health | Espera DB, Redis, Web ficarem saudáveis |
+| 5-13 | Tradução | Executa update-all.sh (veja abaixo) |
+| 14 | Testes de sanidade | Verifica sintaxe Python, JSON, conexão MySQL |
+| 15 | Relatório final | Exibe estatísticas e tempo de execução |
+| 16 | Gerenciar containers | Pergunta se deve parar ou manter |
+
+---
+
+## Atualização Completa (update-all.sh)
+
+Script que executa o fluxo de tradução na ordem certa, pulando graciosamente o que não estiver disponível (ex: containers parados).
+
+```bash
+./update-all.sh                          # fluxo completo
+./update-all.sh --dry-run                # preview sem alterar nada
+./update-all.sh --no-api                 # sem chamadas externas de API
+./update-all.sh --skip-docker            # só arquivos fonte + markdown
+./update-all.sh --project /outro/caminho # projeto em outro lugar
+```
+
+### Etapas que são executadas
+
+| # | Etapa | O que faz |
+|---|-------|-----------|
+| 1 | Verificações | Confirma python3, jq, projeto e containers |
+| 2 | Limpeza | Remove lixo e código de `pending.json` e `translations.json` |
+| 3 | Análise | Cobertura atual via `extract_docker.py` (DB + web) |
+| 4 | Backup | Copia todos os arquivos com chinês antes de modificar |
+| 5 | Patch de fonte | Aplica traduções em `.py`, `.yaml`, `.json`, `.sh` … |
+| 6 | Patch de Markdown | Aplica traduções nos arquivos `.md` |
+| 7 | Patch do banco | UPDATEs no MySQL via `patch_database.py` |
+| 8 | Patch dos assets web | Substitui strings nos bundles JS compilados |
+| 9 | Pendentes via API | Traduz strings novas via MyMemory / Google |
+| 10 | Validação | Reverte `.py` com erro de sintaxe via `revert_broken.py` |
+| 11 | Resumo | Exibe totais do banco e caminho do log |
 
 ## Uso
 
@@ -76,7 +148,10 @@ chmod +x apply-patch.sh
 
 ```
 patchxia/
-├── apply-patch.sh                  # CLI principal (backup -> traduz -> valida)
+├── full-pipeline.sh               # Pipeline completo (Docker + traduz + testa + finaliza)
+├── update-all.sh                  # Atualização completa (11 etapas em um comando)
+├── apply-patch.sh                 # CLI principal (backup -> traduz -> valida)
+├── patch-db.sh                    # Patch isolado do banco MySQL (preview -> aplica -> pendentes)
 ├── clean_translations.py          # Auditoria de qualidade em translations.json
 ├── revert_broken.py               # Reverte arquivos com erro de sintaxe (git checkout)
 ├── scripts/
@@ -111,9 +186,9 @@ patchxia/
 ### Atualizacoes
 
 1. Faca pull do projeto original
-2. Execute o patch novamente (modo incremental)
-3. Novas strings serao adicionadas a `pending.json`
-4. Revise e aprove as novas traducoes
+2. Rode `./update-all.sh` — executa limpeza, backup, patch de fonte + banco + web e traduz pendentes automaticamente
+3. Novas strings que não tiverem tradução ficam em `pending.json`
+4. Revise e aprove as novas traducoes (ou exporte para CSV com `--export`)
 
 ## Gerenciar Strings Pendentes
 
@@ -129,6 +204,55 @@ python3 scripts/translate_pending.py --export-csv
 # Importa CSV revisado de volta ao pending.json
 python3 scripts/translate_pending.py --import-csv pending_translated.csv
 ```
+
+## Alterar o Banco de Dados (MySQL)
+
+Requer o container `xiaozhi-esp32-server-db` rodando. Os comandos abaixo conectam via `docker exec` e executam UPDATEs nas tabelas que contêm texto em chinês.
+
+### Comando tudo-em-um
+
+O script `patch-db.sh` faz todo o fluxo numa chamada: verifica o container, mostra preview, aplica e processa pendentes.
+
+```bash
+./patch-db.sh            # fluxo completo (preview → aplica → pendentes via API)
+./patch-db.sh --dry-run  # apenas preview, sem alterar nada
+./patch-db.sh --no-api   # aplica sem chamadas externas de API
+```
+
+### Comandos individuais (patch_database.py)
+
+Se preferir controlar cada etapa separadamente:
+
+```bash
+# Preview — mostra o que seria alterado sem tocar no banco
+python3 scripts/patch_database.py --dry-run
+
+# Aplica as traduções (usa banco local + APIs MyMemory/Google para strings novas)
+python3 scripts/patch_database.py
+
+# Aplica usando apenas o banco de traduções local (sem chamadas de API)
+python3 scripts/patch_database.py --no-api
+```
+
+### Tabelas e campos alterados
+
+| Tabela | Campos traduzidos | Observação |
+|--------|-------------------|------------|
+| `sys_params` | `param_value`, `remark` | `exit_commands` e `wakeup_words` são arrays separados por `;` — cada item é traduzido individualmente. Parâmetros de chave/token/URL e os params `xiaozhi` e `system-web.menu` são ignorados. |
+| `sys_dict_data` | `dict_label`, `remark` | Labels e remarks de dispositivos/firmware |
+| `ai_model_provider` | `name`, `fields[].label` | `fields` é um JSON array — apenas os `label` internos são traduzidos |
+| `ai_model_config` | `model_name`, `remark` | `remark` pode conter instruções de setup longas |
+| `ai_agent_template` | `agent_name` | `system_prompt` é mantido em chinês intencionalmente (prompt do LLM) |
+
+### Fluxo recomendado
+
+1. Rode `--dry-run` para revisar o que será alterado.
+2. Rode sem flags para aplicar (traduz via API automaticamente).
+3. Se preferir revisar antes de aplicar, use `--no-api` e depois rode `python3 scripts/translate_pending.py` para traduzir as strings pendentes manualmente ou via API em lote.
+
+> **Nota:** as alterações no MySQL são duráveis — não são perdidas com restart do container.
+
+---
 
 ## Modo Docker
 
